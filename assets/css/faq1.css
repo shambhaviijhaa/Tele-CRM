@@ -33,13 +33,13 @@
     padding: 20px 15px;
     border:none;
     outline: none;
-    font-size: 30px;
+    font-size: 20px;
     color: rgb(126, 123, 123);
     font-weight: 700;
     cursor: pointer;
   }
   .question p{
-    font-size: 22px;
+    font-size: 18px;
     max-height: 0;
     opacity: 0;
     line-height: 1.5;
@@ -88,22 +88,13 @@
   }
   
   /* For smaller devices (smartphones) */
-  @media only screen and (max-width: 767px) {
-    .questions-container {
-      max-width: 600px;
-      margin-left: 2rem;
-    }
-    .question {
-      width: 90%;
-    }
+
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
     .question button {
-      font-size: 20px;
+        font-size: 18px;
     }
-    .question p {
-      font-size: 18px;
-    }
-  }
-  
+}
+
   /* For extra small devices (small smartphones) */
   @media only screen and (max-width: 479px) {
     .questions-container {

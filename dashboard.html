@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>T CRM</h2>
+            </div>
+            <ul class="nav-list">
+                <li><a href="#activities" onclick="showSection('activities')">Activities</a></li>
+                <li><a href="#campaigns" onclick="showSection('campaigns')">Campaigns</a></li>
+                <li><a href="#search" onclick="showSection('search')">Search</a></li>
+                <li><a href="#add-leads" onclick="showSection('add-leads')">Add Leads</a></li>
+                <li><a href="#leaderboard" onclick="showSection('leaderboard')">Leaderboard</a></li>
+                <li><a href="#integrations" onclick="showSection('integrations')">Integrations</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar with Search and User Info -->
+            <div class="top-bar">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <div class="user-info">
+                    <span class="user-name">Shambhavi</span>
+                    <span class="user-type">Full Stack Developer</span>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Sections -->
+            <!-- Activities Section -->
+            <div class="content" id="activities" style="display: block;">
+                <h2>Recent Activities</h2>
+                <ul class="activity-list">
+                    <li>John Doe completed a call with XYZ Corp.</li>
+                    <li>Jane Smith added a new lead: Abdullah Malek.</li>
+                    <li>Sam Taylor updated lead status for ABC Ltd.</li>
+                    <li>Amy Adams closed a deal with Global Enterprises - $50,000.</li>
+                    <li>Mark Johnson followed up with lead: Olivia Spencer.</li>
+                    <li>Kate White sent a contract to BlueSky Inc.</li>
+                    <li>Tom Clarkson scheduled a call with GreenTech Innovations.</li>
+                    <li>Chris Evans added notes for the client meeting with Delta Solutions.</li>
+                </ul>
+            </div>
+
+            <!-- Campaigns Section -->
+            <div class="content" id="campaigns" style="display: none;">
+                <h2>Campaign Dashboard</h2>
+                <div class="widgets">
+                    <div class="widget">
+                        <h3>Ongoing Campaigns</h3>
+                        <ul>
+                            <li>Summer Sale Campaign - 85% Completion</li>
+                            <li>New Year Campaign - 65% Completion</li>
+                            <li>Holiday Promo Campaign - 40% Completion</li>
+                            <li>Black Friday Special - 30% Completion</li>
+                            <li>End-of-Quarter Push - 90% Completion</li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h3>Campaign Performance</h3>
+                        <ul>
+                            <li>1000 calls made in the last 24 hours.</li>
+                            <li>750 new leads generated.</li>
+                            <li>Conversion rate of 20% for Q3 campaigns.</li>
+                            <li>Average sales revenue per campaign: $120,000.</li>
+                            <li>Top performing campaign: Summer Sale - 35% increase in revenue.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Section -->
+            <div class="content" id="search" style="display: none;">
+                <h2>Search Leads</h2>
+                <input type="text" class="search-bar" placeholder="Search leads by name..." oninput="searchLeads(this.value)">
+                <div id="search-results">
+                    <ul class="lead-list" id="lead-list">
+                        <!-- Dummy data -->
+                        <li>Abdullah Malek - Status: Active</li>
+                        <li>Chris Hemsworth - Status: Inactive</li>
+                        <li>Emma Watson - Status: Active</li>
+                        <li>Leonardo DiCaprio - Status: Active</li>
+                        <li>Jennifer Lawrence - Status: Inactive</li>
+                        <li>Margot Robbie - Status: Active</li>
+                        <li>Brad Pitt - Status: Inactive</li>
+                        <li>Tom Cruise - Status: Active</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add Leads Section -->
+            <div class="content" id="add-leads" style="display: none;">
+                <h2>Add New Leads</h2>
+                <form id="add-lead-form">
+                    <label for="lead-name">Name:</label>
+                    <input type="text" id="lead-name" name="lead-name" required>
+                    <label for="lead-phone">Phone Number:</label>
+                    <input type="tel" id="lead-phone" name="lead-phone" required>
+                    <label for="lead-email">Email:</label>
+                    <input type="email" id="lead-email" name="lead-email" required>
+                    <label for="lead-status">Status:</label>
+                    <select id="lead-status" name="lead-status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    <button type="submit">Add Lead</button>
+                </form>
+            </div>
+
+            <!-- Leaderboard Section -->
+            <div class="content" id="leaderboard" style="display: none;">
+                <h2>Leaderboard</h2>
+                <ul class="leaderboard-list">
+                    <li>John Doe - 150 leads converted ($1.2M total revenue).</li>
+                    <li>Jane Smith - 130 leads converted ($1.0M total revenue).</li>
+                    <li>Sam Taylor - 110 leads converted ($850K total revenue).</li>
+                    <li>Amy Adams - 100 leads converted ($750K total revenue).</li>
+                    <li>Kate White - 95 leads converted ($700K total revenue).</li>
+                    <li>Mark Johnson - 85 leads converted ($620K total revenue).</li>
+                </ul>
+            </div>
+
+            <!-- Integrations Section -->
+            <div class="content" id="integrations" style="display: none;">
+                <h2>Integrations</h2>
+                <p>Connect your account to Gmail and Google Drive for seamless integration.</p>
+                <div>
+                    <h3>Gmail Integration</h3>
+                    <button onclick="integrateGmail()">Integrate Gmail</button>
+                </div>
+                <div>
+                    <h3>Google Drive Integration</h3>
+                    <button onclick="integrateGoogleDrive()">Integrate Google Drive</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
