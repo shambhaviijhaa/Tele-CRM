@@ -1,48 +1,22 @@
-// Function to show the selected section and hide others
+// Function to show different sections on click
 function showSection(sectionId) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.content');
-    sections.forEach(section => {
-        section.style.display = 'none'; // Hide each section
-    });
-
-    // Show the selected section
-    document.getElementById(sectionId).style.display = 'block'; // Show selected section
-
-    // Remove active class from all links
-    const links = document.querySelectorAll('.nav-list li a');
-    links.forEach(link => {
-        link.classList.remove('active'); // Remove active class
-    });
-
-    // Add active class to the clicked link
-    const activeLink = document.querySelector(`.nav-list li a[href="#${sectionId}"]`);
-    if (activeLink) {
-        activeLink.classList.add('active'); // Add active class to the selected link
+    var sections = document.getElementsByClassName("content");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
     }
+    document.getElementById(sectionId).style.display = "block";
 }
 
-// Show the activities section by default
-showSection('activities'); // Display the Activities section by default
-
-// Function to integrate Gmail
+// Placeholder Gmail and Google Drive integration functions
 function integrateGmail() {
-    alert('Integrating Gmail...');
+    alert("Gmail integration coming soon!");
 }
 
-// Function to integrate Google Drive
 function integrateGoogleDrive() {
-    alert('Integrating Google Drive...');
+    alert("Google Drive integration coming soon!");
 }
 
-// Function to search leads
-function searchLeads(query) {
-    const leads = document.querySelectorAll('#lead-list li');
-    leads.forEach(lead => {
-        if (lead.textContent.toLowerCase().includes(query.toLowerCase())) {
-            lead.style.display = 'block';
-        } else {
-            lead.style.display = 'none';
-        }
-    });
+// Placeholder search function
+function searchLeads(value) {
+    console.log("Searching leads for: " + value);
 }

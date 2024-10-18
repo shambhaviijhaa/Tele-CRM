@@ -1,17 +1,3 @@
-* {
-  font-family: 'Rubik', sans-serif;
-}
-
-body {
-  line-height: 1.5;
-  height: 100%;
-  font-family: 'Rubik', sans-serif;
-  margin: 0;
-  color: #2e2e2e;
-  overflow: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
-}
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -1422,48 +1408,4 @@ footer div.bg-purple-shade {
       height: 40px;
       font-size: 20px;
   }
-}
-
-/* --------------------- */
-
-.header-section .get-started-form-container .container-get-started-btn {
-  background-color: #7b68ee;
-}
-
-.header-section .get-started-form-container .container-get-started-btn:hover {
-  background-color: #6c53c5;
-}
-
-#navbar3-purple .navbar-sub-container .cta-purple-btn {
-  background-color: #7b68ee;
-}
-
-#navbar3-purple .navbar-sub-container .cta-purple-btn:hover {
-  background-color: #6c53c5;
-}
-
-#footer3-h .btn-footer-purple {
-  background-color: #7b68ee;
-}
-
-#footer3-h .btn-footer-purple:hover {
-  background-color: #6c53c5;
-}
-
-#footer3-h-blog footer {
-  border-top: 1px solid #F5F5F5;
-}
-
-#footer3-h-blog footer div.bg-purple-shade {
-  background-color: #fff;
-  color: #000;
-}
-
-#footer3-h-blog footer .footer-bottom {
-  background-color: #F7F7F7;
-}
-
-#footer3-h-blog .color-white,
-#footer3-h-blog .text-light {
-  color: #2e2e2e !important;
 }

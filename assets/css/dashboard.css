@@ -1,3 +1,4 @@
+
 /* Basic Styles */
 body, html {
     margin: 0;
@@ -13,10 +14,10 @@ body, html {
 
 /* Sidebar */
 .sidebar {
-    width: 20%;
+    width: 70px;
     background: #2c3e50;
     color: #ecf0f1;
-    padding: 20px;
+    padding: 15px;
 }
 
 .logo {
@@ -25,38 +26,44 @@ body, html {
 
 .nav-list {
     list-style: none;
-    padding: 0;
+    padding: 1px;
 }
 
 .nav-list li {
     margin: 20px 0;
 }
 
-.nav-list li a {
+.icon-container {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon-container i {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.icon-name {
+    font-size: 14px;
+    display: none;
     color: #ecf0f1;
-    text-decoration: none;
-    font-size: 18px;
 }
 
-.nav-list li a:hover {
-    color: #5a67d8;
+.icon-container:hover .icon-name {
+    display: block; /* Show the name on hover */
 }
 
-/* Active class styling */
-.nav-list li a.active {
-    color: #5a67d8;
-    font-weight: bold;
-}
 
 /* Main Content */
 .main-content {
     flex: 1;
     padding: 20px;
     background-color: #fafafa;
-    flex-direction: column;
-    height: 93vh; /* Full viewport height */
-    overflow: hidden;
     display: flex;
+    flex-direction: column;
+    overflow: auto;
 }
 
 /* Top Bar */
@@ -75,53 +82,33 @@ body, html {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 .user-info {
     display: flex;
     align-items: center;
 }
+
 .user-info .user-name {
     font-size: 18px;
     font-weight: bold;
     margin-right: 10px;
 }
 
-/* Section Styles */
+.user-info .user-type {
+    font-size: 14px;
+    color: #bdc3c7;
+}
+
+/* Content Sections */
 .content {
-    background: #ffffff;
+    display: none;
     padding: 20px;
-    margin: 20px 0;
-    height: calc(100vh - 20%);;
-    overflow-y: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.widget {
-    margin-bottom: 20px;
-}
-
-.lead-list, .activity-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.lead-list li, .activity-list li {
-    background: #ecf0f1;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 3px;
-}
-
-/* Leaderboard */
-.leaderboard-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.leaderboard-list li {
-    background: #e67e22;
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 3px;
+h2 {
+    margin-top: 0;
 }

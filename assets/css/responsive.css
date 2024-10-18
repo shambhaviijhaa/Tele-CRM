@@ -8,3 +8,56 @@
                 font-size: 1.1rem;
             }
         }
+/* faqs */
+  
+  /* Media queries for responsiveness */
+  /* For larger devices (desktops and laptops) */
+  @media only screen and (min-width: 1200px) {
+    .questions-container {
+      max-width: 1900px;
+      margin-left: 19rem;
+    }
+    .question {
+      width: 80%;
+    }
+  }
+  
+  /* For medium-sized devices (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .questions-container {
+      max-width: 900px;
+      margin-left: 5rem;
+    }
+    .question {
+      width: 80%;
+    }
+    .question button {
+      font-size: 25px;
+    }
+  }
+  
+  /* For smaller devices (smartphones) */
+
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .question button {
+        font-size: 18px;
+    }
+}
+
+  /* For extra small devices (small smartphones) */
+  @media only screen and (max-width: 479px) {
+    .questions-container {
+      max-width: 600px;
+      margin-left: 1rem;
+    }
+    .question {
+      width: 100%;
+    }
+    .question button {
+      font-size: 18px;
+    }
+    .question p {
+      font-size: 16px;
+    }
+  }
+  

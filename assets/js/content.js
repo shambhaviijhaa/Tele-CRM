@@ -40,11 +40,11 @@ function showSection(sectionId) {
     });
 
     // Add active class to the clicked link
-    const activeLink = document.querySelector(.nav-list li a[href="#${col}"]);
+    const activeLink = document.querySelector('.nav-list li a[href="#${col}"]');
     if (activeLink) {
         activeLink.classList.add('active'); // Add active class to the selected link
     }
 }
 
-// Show the activities section by default
-showSection('activities'); // Display the Activities section by default
+// Show the section by default
+showSection('dashboard'); // Display the Dashbboard section by default
