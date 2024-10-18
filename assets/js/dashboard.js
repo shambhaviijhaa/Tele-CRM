@@ -79,3 +79,25 @@ document.addEventListener('click', function(event) {
         closeAllSubmenus();
     }
 });
+
+
+// Search functionality (example)
+function searchLeads(query) {
+    // Logic for searching leads based on the input query
+    console.log("Searching leads with query: " + query);
+}
+
+// Filter by name
+function filterByName(name) {
+    console.log("Filtering by name: " + name);
+}
+
+// Filter by phone
+function filterByPhone(phone) {
+    console.log("Filtering by phone: " + phone);
+}
+
+// Filter by email
+function filterByEmail(email) {
+    console.log("Filtering by email: " + email);
+}
