@@ -36,155 +36,81 @@
 
             <!-- Dynamic Content Sections -->
             <!-- Activities Section -->
-            <div class="content" id="activities" style="display: block;">
-                <h2>Recent Activities</h2>
-                <ul class="activity-list">
-                    <li>John Doe completed a call with XYZ Corp.</li>
-                    <li>Jane Smith added a new lead: Abdullah Malek.</li>
-                    <li>Sam Taylor updated lead status for ABC Ltd.</li>
-                    <li>Amy Adams closed a deal with Global Enterprises - $50,000.</li>
-                    <li>Mark Johnson followed up with lead: Olivia Spencer.</li>
-                    <li>Kate White sent a contract to BlueSky Inc.</li>
-                    <li>Tom Clarkson scheduled a call with GreenTech Innovations.</li>
-                    <li>Chris Evans added notes for the client meeting with Delta Solutions.</li>
-                </ul>
-            </div>
-
-            <!-- Campaigns Section -->
-            <div class="content" id="campaigns" style="display: none;">
-                <h2>Campaign Dashboard</h2>
-                <div class="widgets">
-                    <div class="widget">
-                        <h3>Ongoing Campaigns</h3>
-                        <ul>
-                            <li>Summer Sale Campaign - 85% Completion</li>
-                            <li>New Year Campaign - 65% Completion</li>
-                            <li>Holiday Promo Campaign - 40% Completion</li>
-                            <li>Black Friday Special - 30% Completion</li>
-                            <li>End-of-Quarter Push - 90% Completion</li>
-                        </ul>
-                    </div>
-                    <div class="widget">
-                        <h3>Campaign Performance</h3>
-                        <ul>
-                            <li>1000 calls made in the last 24 hours.</li>
-                            <li>750 new leads generated.</li>
-                            <li>Conversion rate of 20% for Q3 campaigns.</li>
-                            <li>Average sales revenue per campaign: $120,000.</li>
-                            <li>Top performing campaign: Summer Sale - 35% increase in revenue.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Search Section -->
-            <div class="content" id="search" style="display: none;">
-                <h2>Search Leads</h2>
-                <input type="text" class="search-bar" placeholder="Search leads by name..." oninput="searchLeads(this.value)">
-                <div id="search-results">
-                    <ul class="lead-list" id="lead-list">
-                        <!-- Dummy data -->
-                        <li>Abdullah Malek - Status: Active</li>
-                        <li>Chris Hemsworth - Status: Inactive</li>
-                        <li>Emma Watson - Status: Active</li>
-                        <li>Leonardo DiCaprio - Status: Active</li>
-                        <li>Jennifer Lawrence - Status: Inactive</li>
-                        <li>Margot Robbie - Status: Active</li>
-                        <li>Brad Pitt - Status: Inactive</li>
-                        <li>Tom Cruise - Status: Active</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Add Leads Section -->
-            <!-- <div class="content" id="add-leads" style="display: none;">
-                <h2>Add New Leads</h2>
-                <form id="add-lead-form">
-                    <label for="lead-name">Name:</label>
-                    <input type="text" id="lead-name" name="lead-name" required>
-                    <label for="lead-phone">Phone Number:</label>
-                    <input type="tel" id="lead-phone" name="lead-phone" required>
-                    <label for="lead-email">Email:</label>
-                    <input type="email" id="lead-email" name="lead-email" required>
-                    <label for="lead-status">Status:</label>
-                    <select id="lead-status" name="lead-status">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                    <button type="submit">Add Lead</button>
-                </form>
-            </div> -->
-            <div class="form-container" id="add-leads">
-                <h1>Add Lead</h1>
-                <form id="leadForm">
-                  <div class="form-group">
-                    <label for="name">NAME:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter Name" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="email">EMAIL:</label>
-                    <input type="text" id="email" name="collegeName" placeholder="abc@xyz.com" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="phone">PHONE:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="alternatePhone">ALTERNATE PHONE:</label>
-                    <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate number">
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="stream">STREAM:</label>
-                    <select id="stream" name="stream" data-placeholder="Choose stream">
-                      <option value="">Choose stream</option>
-                      <option value="">BCA</option>
-                      <option value="">BBA</option>
-                      <option value="">BTECH</option>
-                      <option value="">MCA</option>
-                    </select>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="year">YEAR:</label>
-                    <input type="number" id="year" name="year" placeholder="Enter Year" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="address">ADDRESS:</label>
-                    <textarea id="address" name="address" placeholder="Enter Address" required></textarea>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="interestedIn">INTERESTED IN:</label>
-                    <select id="interestedIn" name="interestedIn" required>
-                        <option value="">Full Stack Development</option>
-                        <option value="">Digital Marketing</option>
-                        <option value="">Java</option>
-                        <option value="">AI/ML</option>
-                        <option value="">Web Development</option>
+            <div class="content" id="add-leads" style="display: block;">
+                <div class="form-container" id="add-leads">
+                    <h1>Add Lead</h1>
+                    <form id="leadForm">
+                      <div class="form-group">
+                        <label for="name">NAME:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter Name" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="email">EMAIL:</label>
+                        <input type="text" id="email" name="collegeName" placeholder="abc@xyz.com" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="phone">PHONE:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="alternatePhone">ALTERNATE PHONE:</label>
+                        <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate number">
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="stream">STREAM:</label>
+                        <select id="stream" name="stream" data-placeholder="Choose stream">
+                          <option value="">Choose stream</option>
+                          <option value="">BCA</option>
+                          <option value="">BBA</option>
+                          <option value="">BTECH</option>
+                          <option value="">MCA</option>
                         </select>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="year">YEAR:</label>
+                        <input type="number" id="year" name="year" placeholder="Enter Year" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="address">ADDRESS:</label>
+                        <textarea id="address" name="address" placeholder="Enter Address" required></textarea>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="interestedIn">INTERESTED IN:</label>
+                        <select id="interestedIn" name="interestedIn" required>
+                            <option value="">Full Stack Development</option>
+                            <option value="">Digital Marketing</option>
+                            <option value="">Java</option>
+                            <option value="">AI/ML</option>
+                            <option value="">Web Development</option>
+                            </select>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="collegeName">COLLEGE NAME:</label>
+                        <input type="text" id="collegeName" name="collegeName" placeholder="Enter College Name" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="counselingDate">COUNSELING DATE:</label>
+                        <input type="date" id="counselingDate" name="counselingDate" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <button type="submit">Add Lead</button>
+                        <button type="button" id="minimizeButton">Show Minimized View</button>
+                      </div>
+                    </form>
                   </div>
+            </div>
+
             
-                  <div class="form-group">
-                    <label for="collegeName">COLLEGE NAME:</label>
-                    <input type="text" id="collegeName" name="collegeName" placeholder="Enter College Name" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="counselingDate">COUNSELING DATE:</label>
-                    <input type="date" id="counselingDate" name="counselingDate" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <button type="submit">Add Lead</button>
-                    <button type="button" id="minimizeButton">Show Minimized View</button>
-                  </div>
-                </form>
-              </div>
             
               <script src="script.js"></script>
               <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
