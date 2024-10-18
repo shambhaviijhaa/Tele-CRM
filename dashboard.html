@@ -28,22 +28,39 @@
                     </div>
                 </li>
                 <li>
-                    <div class="icon-container" onclick="showSection('add-lead')">
+                    <div class="icon-container" onclick="toggleSubsection('add-lead-submenu')">
                         <i class="fas fa-user-plus"></i>
                         <span class="icon-name">Add Lead</span>
                     </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="add-lead-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('addByExcel')">Excel</li>
+                        <li onclick="showSubContent('addByManual')">Manual</li>
+                        <li onclick="showSubContent('addByThirdParty')">Third Party</li>
+                    </ul>
                 </li>
                 <li>
-                    <div class="icon-container" onclick="showSection('activities')">
+                    <div class="icon-container" onclick="toggleSubsection('activities-submenu')">
                         <i class="fas fa-tasks"></i>
                         <span class="icon-name">Activities</span>
                     </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="activities-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('myLeads')">My Leads</li>
+                        <li onclick="showSubContent('myCalls')">My Calls</li>
+                    </ul>
                 </li>
                 <li>
-                    <div class="icon-container" onclick="showSection('report')">
+                    <div class="icon-container" onclick="toggleSubsection('report-submenu')">
                         <i class="fas fa-chart-line"></i>
                         <span class="icon-name">Reports</span>
                     </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="report-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('addByExcel')">Leaderboard</li>
+                        <li onclick="showSubContent('addByManual')">Calls Report</li>
+                        <li onclick="showSubContent('addByThirdParty')">Leads Report</li>
+                    </ul>
                 </li>
                 <li>
                     <div class="icon-container" onclick="showSection('integrations')">
@@ -92,32 +109,30 @@
             </div>
             <div class="content" id="add-lead" style="display: none;">
                 <h2>Add New Leads</h2>
-                <div id="add-options">
-                    <div id="addByExcel">
-                        <h3>Add by Excel</h3>
-                        <p>Upload your Excel file...</p>
-                    </div>
-                    <div id="addByManual">
-                        <h3>Add by Manual (Form)</h3>
-                        <form id="add-lead-form">
-                            <label for="lead-name">Name:</label>
-                            <input type="text" id="lead-name" name="lead-name" required>
-                            <label for="lead-phone">Phone Number:</label>
-                            <input type="tel" id="lead-phone" name="lead-phone" required>
-                            <label for="lead-email">Email:</label>
-                            <input type="email" id="lead-email" name="lead-email" required>
-                            <label for="lead-status">Status:</label>
-                            <select id="lead-status" name="lead-status">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                            <button type="submit">Add Lead</button>
-                        </form>
-                    </div>
-                    <div id="addByThirdParty">
-                        <h3>Add by Third Party</h3>
-                        <p>Integrate with third-party services...</p>
-                    </div>
+                <div id="addByExcel" class="sub-content" style="display: none;">
+                    <h3>Add by Excel</h3>
+                    <p>Upload your Excel file...</p>
+                </div>
+                <div id="addByManual" class="sub-content" style="display: none;">
+                    <h3>Add by Manual (Form)</h3>
+                    <form id="add-lead-form">
+                        <label for="lead-name">Name:</label>
+                        <input type="text" id="lead-name" name="lead-name" required>
+                        <label for="lead-phone">Phone Number:</label>
+                        <input type="tel" id="lead-phone" name="lead-phone" required>
+                        <label for="lead-email">Email:</label>
+                        <input type="email" id="lead-email" name="lead-email" required>
+                        <label for="lead-status">Status:</label>
+                        <select id="lead-status" name="lead-status">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                        <button type="submit">Add Lead</button>
+                    </form>
+                </div>
+                <div id="addByThirdParty" class="sub-content" style="display: none;">
+                    <h3>Add by Third Party</h3>
+                    <p>Integrate with third-party services...</p>
                 </div>
             </div>
             <div class="content" id="activities" style="display: none;">

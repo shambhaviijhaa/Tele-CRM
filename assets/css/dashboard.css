@@ -112,3 +112,54 @@ body, html {
 h2 {
     margin-top: 0;
 }
+/* Sidebar submenu styling */
+.sub-menu {
+    list-style: none;
+    position: absolute;
+    left: 80px; /* Positioning the submenu to the right of the sidebar */
+    top: 10%;
+    background-color: #34495e; /* Background color for submenu */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow for floating effect */
+    z-index: 1; /* Ensures the submenu floats above other content */
+    display: none; /* Hidden by default */
+}
+
+.sub-menu li {
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #ecf0f1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu li:hover {
+    background-color: #3c637d;
+}
+
+/* Make sure to add padding to avoid overlapping with the sidebar */
+.sidebar {
+    position: relative;
+}
+
+/* Adjust selected styles */
+.icon-container.selected {
+    background-color: #2980b9; /* Highlight selected main menu item */
+    border-radius: 10px;
+    color: #fff;
+}
+
+.sub-menu li.selected {
+    background-color: #3c637d; /* Highlight selected submenu item */
+}
+
+
+/* Main content for subsections */
+.sub-content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
