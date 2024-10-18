@@ -125,3 +125,54 @@ body, html {
     margin: 5px 0;
     border-radius: 3px;
 }
+
+/* Add lead start*/
+.form-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 80%;
+    /* margin-left: 20%;
+    margin-top: 15%; */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #747272;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px; /* Increase font size to 18px */
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .minimized-view {
+    /* display: none; */
+    font-style: italic;
+    color: #666;
+  }
+  .form-group select:not(:focus) {
+    color: #999;
+  }
+  /* Add lead end*/
