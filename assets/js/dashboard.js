@@ -101,3 +101,57 @@ function filterByPhone(phone) {
 function filterByEmail(email) {
     console.log("Filtering by email: " + email);
 }
+
+// add excel start
+function uploadAndDisplay() {
+    const fileInput = document.getElementById('excelFileInput');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const data = new Uint8Array(event.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+
+            const json = XLSX.utils.sheet_to_json(worksheet);
+            displayData(json);
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+}
+
+function displayData(data) {
+    const dataDisplay = document.getElementById('excelDataDisplay');
+
+    // Create table structure dynamically based on keys in the first object
+    if (data.length === 0) {
+        dataDisplay.innerHTML = '<p>No data available.</p>';
+        return;
+    }
+
+    const headers = Object.keys(data[0]);
+    let table = '<table class="excel-upload-table"><thead><tr>';
+
+    // Create table headers
+    headers.forEach(header => {
+        table += `<th class="excel-upload-th">${header}</th>`;
+    });
+    table += '</tr></thead><tbody>';
+
+    // Populate table rows with data
+    data.forEach(item => {
+        table += '<tr class="excel-upload-tr">';
+        headers.forEach(header => {
+            table += `<td class="excel-upload-td">${item[header] || ''}</td>`;
+        });
+        table += '</tr>';
+    });
+
+    table += '</tbody></table>';
+    dataDisplay.innerHTML = table;
+}
+//add excel end

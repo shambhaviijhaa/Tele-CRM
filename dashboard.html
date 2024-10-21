@@ -125,6 +125,12 @@
                 <div id="addByExcel" class="sub-content" style="display: none;">
                     <h3>Add by Excel</h3>
                     <p>Upload your Excel file...</p>
+                    <body class="excel-upload-body">
+                        <input type="file" id="excelFileInput" accept=".xlsx, .xls">
+                        <button class="excel-upload-button" onclick="uploadAndDisplay()">Upload and View</button>
+                        <div id="excelDataDisplay" class="excel-upload-data-display"></div>
+                        <script src="https://cdn.jsdelivr.net/npm/xlsx@latest/dist/xlsx.full.min.js"></script>
+                    </body>
                 </div>
                 <div id="addByManual" class="sub-content" style="display: none;">
                     <form id="add-lead-form">
