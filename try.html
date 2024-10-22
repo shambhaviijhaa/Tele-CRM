@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Activities</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <h2>Pedestal Tech</h2>
+      </div>
+      <ul class="menu">
+        <li><i class="icon">🏠</i> Home</li>
+        <li><i class="icon">📞</i> Calls</li>
+        <li><i class="icon">📝</i> Leads</li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Tabs for Leads and Calls -->
+      <div class="tabs">
+        <button class="tab active" onclick="showLeads()">Leads (281)</button>
+        <button class="tab" onclick="showCalls()">Calls</button>
+      </div>
+
+      <div class="content">
+        <!-- List of Leads/Calls -->
+        <div class="list-section" id="lead-list">
+          <div class="lead-item">
+            <h4>Neelima Gokhoru</h4>
+            <p>Status: Fresh</p>
+            <p>12:18 PM, Mon, 21 Oct</p>
+          </div>
+          <div class="lead-item">
+            <h4>Mrs. Latika Jha, Vedic Kanya</h4>
+            <p>Status: Fresh</p>
+            <p>12:04 PM, Mon, 21 Oct</p>
+          </div>
+          <div class="lead-item">
+            <h4>Shambhavi Jha</h4>
+            <p>Status: Call Later</p>
+            <p>1:45 PM, Thu, 17 Oct</p>
+          </div>
+          <div class="lead-item">
+            <h4>Pl Sharma Parishkar</h4>
+            <p>Status: Fresh</p>
+            <p>1:20 PM, Wed, 11 Sep</p>
+          </div>
+          <!-- Add more leads as needed -->
+        </div>
+
+        <!-- Lead/Call Info Section -->
+        <div class="info-section">
+          <div class="lead-info">
+            <h2>Pl Sharma Parishkar</h2>
+            <p>Status: Fresh</p>
+            <p>Phone: +91 9314503670</p>
+            <p>Acquired: 1:20 PM, Wed, 11 Sep 24</p>
+          </div>
+
+          <!-- Call Action Buttons -->
+          <div class="actions">
+            <button>Call</button>
+            <button>Call Later</button>
+            <button>WhatsApp</button>
+            <button>SMS</button>
+            <button>Email</button>
+            <button>Add Note</button>
+          </div>
+
+          <!-- Lead/Call History -->
+          <div class="history">
+            <h4>History</h4>
+            <div class="history-item">
+              <p>2m 1s CONNECTED</p>
+            </div>
+            <div class="history-item">
+              <p>2m 20s CONNECTED</p>
+            </div>
+            <div class="history-item">
+              <p>Lead Added by Shweta Agarwal</p>
+            </div>
+            <div class="history-item">
+              <p>29s CONNECTED</p>
+            </div>
+            <!-- Add more history items -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showLeads() {
+      document.getElementById('lead-list').style.display = 'block';
+      // Add logic for showing lead list
+    }
+
+    function showCalls() {
+      document.getElementById('lead-list').style.display = 'none';
+      // Add logic for showing call list
+    }
+  </script>
+</body>
+</html>
