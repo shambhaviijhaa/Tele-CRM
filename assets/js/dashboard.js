@@ -155,3 +155,8 @@ function displayData(data) {
     dataDisplay.innerHTML = table;
 }
 //add excel end
+
+document.querySelector('.settings-button').addEventListener('click', function() {
+    // Add your settings functionality here
+    console.log('Settings clicked!');
+});
