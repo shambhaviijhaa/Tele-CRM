@@ -12,6 +12,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
+                <img src="assets/img/crm logo.png" alt="logo" width="50" height="50">
                 <h2>CRM</h2>
             </div>
             <ul class="nav-list">
@@ -66,6 +67,12 @@
                     <div class="icon-container" onclick="showSection('integrations')">
                         <i class="fas fa-plug"></i>
                         <span class="icon-name">Integrations</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="showSection('lists')">
+                        <i class="fas fa-clipboard-list"></i> <!-- Assuming 'fa-list' as the icon -->
+                        <span class="icon-name">Lists</span>
                     </div>
                 </li>
             </ul>
@@ -263,6 +270,31 @@
                     <h3>Google Drive Integration</h3>
                     <button onclick="integrateGoogleDrive()">Integrate Google Drive</button>
                 </div>
+            </div>
+
+            <div class="content" id="lists" style="display: none;">
+                <div class="custom-my-lists">
+                    <h2><strong>Custom Lists</strong></h2>
+                    <ul id="custom-list-container"></ul>
+                    <button id="custom-create-list-btn">Create New List</button>
+                </div>
+                
+                <div id="custom-create-list-modal" class="custom-modal">
+                    <div class="custom-modal-content">
+                        <span class="custom-close">&times;</span>
+                        <h2>Create List</h2>
+                        <input type="text" id="custom-list-name" placeholder="List Name">
+                        
+                        <div class="custom-color-picker-container">
+                            <label for="custom-list-color" id="custom-color-placeholder">Choose Color</label>
+                            <input type="color" id="custom-list-color">
+                        </div>
+                
+                        <button id="custom-cancel-btn">Cancel</button>
+                        <button id="custom-proceed-btn">Proceed</button>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>

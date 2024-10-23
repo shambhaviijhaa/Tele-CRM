@@ -277,6 +277,7 @@ input, select, textarea {
 button {
   padding: 10px 20px;
   color: white;
+  background-color: #00509e;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -334,3 +335,217 @@ button {
     background-color: #f1f1f1;
 }
 /* add excel end */
+
+ /*add list start*/
+  /* General body styles */
+/* body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+} */
+
+/* My Custom Lists container */
+.custom-my-lists {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-my-lists h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* List container styles */
+ /* Styles specific to the custom list component */
+.custom-my-lists ul {
+    list-style: none;
+    padding: 0;
+}
+
+.custom-my-lists li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
+}
+
+.custom-my-lists li:hover {
+    background-color: #f0f0f5;
+}
+
+
+/* Custom Modal styling */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+}
+
+.custom-modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-close {
+    color: #888;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.custom-close:hover {
+    color: #333;
+}
+
+/* Button styles */
+/* button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #ccc;
+}
+
+button:hover {
+    background-color: #e6e6e6;
+} */
+
+/* Create and action buttons */
+#custom-proceed-btn, #custom-create-list-btn {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+}
+
+#custom-proceed-btn:hover, #custom-create-list-btn:hover {
+    background-color: #00509e;
+}
+
+#custom-cancel-btn {
+    background-color: #ccc;
+}
+
+#custom-cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+
+/* Edit and delete buttons inside list items */
+.custom-list-buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.custom-list-buttons button.custom-edit {
+    background-color: #28a745;
+    color: white;
+}
+
+.custom-list-buttons button.custom-edit:hover {
+    background-color: #218838;
+}
+
+.custom-list-buttons button.custom-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.custom-list-buttons button.custom-delete:hover {
+    background-color: #c82333;
+}
+
+/* Custom Input fields in modal */
+input[type="text"], input[type="color"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+}
+
+input[type="color"] {
+    padding: 5px;
+    height: 40px;
+    border: none;
+}
+
+/* Color picker container */
+.custom-color-picker-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    margin-bottom: 20px;
+}
+
+/* Placeholder styling for color picker */
+.custom-color-placeholder {
+    position: absolute;
+    left: 50%; /* Move the placeholder to the middle horizontally */
+    top: 50%; /* Move the placeholder to the middle vertically */
+    transform: translate(-50%, -50%); /* Center the placeholder */
+    pointer-events: none;
+    color: #888;
+    font-size: 14px;
+    transition: 0.3s ease;
+    text-align: center;
+    z-index: 1; /* Ensure placeholder stays above color input */
+}
+
+/* Style the color input */
+input[type="color"].custom-color-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent; /* Make background transparent */
+    cursor: pointer;
+    position: relative;
+    z-index: 2; /* Keep color input above other elements */
+}
+
+/* Hide placeholder when color is selected */
+input[type="color"].custom-color-input:focus + .custom-color-placeholder,
+input[type="color"].custom-color-input:valid + .custom-color-placeholder {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+  /*add list end*/
