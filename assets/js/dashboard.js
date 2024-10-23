@@ -243,3 +243,20 @@ customProceedBtn.addEventListener('click', () => {
 });
 
 //add list end
+
+//splash screen start
+document.addEventListener("DOMContentLoaded", () => {
+    // Simulating loading time (You can replace this with actual project initialization logic)
+    setTimeout(() => {
+        // Hide splash screen and show main content after animation completes
+        const splashScreen = document.getElementById('splash-screen');
+        const mainContent = document.getElementById('main-content');
+
+        splashScreen.addEventListener('animationend', () => {
+            splashScreen.style.display = 'none'; // Hide splash screen after fade-out
+            mainContent.style.opacity = '1'; // Fade in main content
+        });
+
+    }, 3000); // Example 3 seconds delay (replace with actual timing)
+});
+//splash screen end
