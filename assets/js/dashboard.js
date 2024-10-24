@@ -260,3 +260,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000); // Example 3 seconds delay (replace with actual timing)
 });
 //splash screen end
+

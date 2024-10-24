@@ -142,7 +142,7 @@ body, html {
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -608,4 +608,137 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     100% {
         transform: scale(1);
     }
+}
+
+.dashboard-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.top-bar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #3d3d3d;
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.date-and-settings {
+    display: flex;
+    align-items: center;
+}
+
+.date-button, .settings-icon {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.info-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.info-box {
+    background-color: white;
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 10px;
+}
+
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #3d3d3d;
+}
+
+.last-updated {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.filter-options {
+    display: flex;
+    align-items: center;
+}
+
+.filter-options input {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.date-button-small {
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.performance-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.performance-table th, .performance-table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.performance-table th {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.performance-table td {
+    background-color: white;
+    color: #3d3d3d;
+}
+
+.performance-table .total-row td {
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+.avatar {
+    display: inline-block;
+    background-color: #e0e7ff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: #4f46e5;
+    margin-right: 10px;
+}
+
+.follow-up-content {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.no-data {
+    font-size: 1rem;
+    color: #6c757d;
+    cursor: pointer;
 }
