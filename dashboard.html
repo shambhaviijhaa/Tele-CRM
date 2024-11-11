@@ -45,15 +45,15 @@
                     </ul>
                 </li>
                 <li>
-                    <div class="icon-container" onclick="toggleSubsection('activities-submenu')">
+                    <div class="icon-container" onclick="showSection('activities')">
                         <i class="fas fa-tasks"></i>
                         <span class="icon-name">Activities</span>
                     </div>
                     <!-- Submenu for Add Lead -->
-                    <ul id="activities-submenu" class="sub-menu" style="display: none;">
+                    <!-- <ul id="activities-submenu" class="sub-menu" style="display: none;">
                         <li onclick="showSubContent('myLeads')">My Leads</li>
                         <li onclick="showSubContent('myCalls')">My Calls</li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <li>
                     <div class="icon-container" onclick="toggleSubsection('report-submenu')">
@@ -390,17 +390,158 @@
                 </div>
             </div>
             <div class="content" id="activities" style="display: none;">
-                <h2>Activities</h2>
-                <div id="activities-options">
-                    <div id="myLeads">
+                <span>Activities</span>
+                     <!-- <div id="myLeads">
                         <h3>My Leads</h3>
                         <p>View your leads...</p>
                     </div>
                     <div id="myCalls">
                         <h3>My Calls</h3>
                         <p>View your calls...</p>
-                    </div>
-                </div>
+                    </div> -->
+
+                    <div class="tabs">
+                        <button class="tab" onclick="showLeads()">Leads (287)</button>
+                        <button class="tab" onclick="showCalls()">Calls (204)</button>
+                      </div>
+                
+                       <!-- <div class="content"> -->
+                        <!-- List of Leads -->
+                        <div class="list-section" id="lead-list">
+                         <h2><i>Leads</i></h2>
+                          <div class="lead-item" onclick="showLeadInfo('Neelima Gokhoru', 'Fresh', '+91 9812345678', '12:18 PM, Mon, 21 Oct', 'Lead Added by Neelima')">
+                            <h4>Neelima Gokhoru</h4>
+                            <p>Status: Fresh</p>
+                            <p>12:18 PM, Mon, 21 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Mrs. Latika Jha', 'Fresh', '+91 9812345679', '12:04 PM, Mon, 21 Oct', 'Lead Added by Latika')">
+                            <h4>Mrs. Latika Jha</h4>
+                            <p>Status: Fresh</p>
+                            <p>12:04 PM, Mon, 21 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Shambhavi Jha', 'Call Later', '+91 9812345680', '1:45 PM, Thu, 17 Oct', 'Lead Added by Shambhavi')">
+                            <h4>Shambhavi Jha</h4>
+                            <p>Status: Call Later</p>
+                            <p>1:45 PM, Thu, 17 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Pl Sharma Parishkar', 'Fresh', '+91 9812345681', '1:20 PM, Wed, 11 Sep', 'Lead Added by Sharma')">
+                            <h4>Pl Sharma Parishkar</h4>
+                            <p>Status: Fresh</p>
+                            <p>1:20 PM, Wed, 11 Sep</p>
+                          </div>
+                          <!-- Additional Leads -->
+                          <div class="lead-item" onclick="showLeadInfo('Anjali Das', 'Interested', '+91 9812345682', '4:35 PM, Fri, 29 Sep', 'Lead Added by Anjali')">
+                            <h4>Anjali Das</h4>
+                            <p>Status: Interested</p>
+                            <p>4:35 PM, Fri, 29 Sep</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Rajesh Kumar', 'Fresh', '+91 9812345683', '3:50 PM, Thu, 28 Sep', 'Lead Added by Rajesh')">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Status: Fresh</p>
+                            <p>3:50 PM, Thu, 28 Sep</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Sarita Verma', 'Call Later', '+91 9812345684', '11:30 AM, Wed, 27 Sep', 'Lead Added by Sarita')">
+                            <h4>Sarita Verma</h4>
+                            <p>Status: Call Later</p>
+                            <p>11:30 AM, Wed, 27 Sep</p>
+                          </div>
+                          <div class="lead-item" onclick="showLeadInfo('Kartik Mehra', 'Interested', '+91 9812345685', '5:00 PM, Tue, 26 Sep', 'Lead Added by Kartik')">
+                            <h4>Kartik Mehra</h4>
+                            <p>Status: Interested</p>
+                            <p>5:00 PM, Tue, 26 Sep</p>
+                          </div>
+                        </div>
+                
+                        <!-- List of Calls -->
+                        <div class="list-section" id="call-list" style="display: none;">
+                          <h2><i>Calls</i></h2>
+                          <div class="lead-item" onclick="showCallInfo('Rohit Sharma', 'Completed', '+91 9823456781', '3:20 PM, Tue, 12 Oct', '5m 10s CONNECTED')">
+                            <h4>Rohit Sharma</h4>
+                            <p>Status: Completed</p>
+                            <p>3:20 PM, Tue, 12 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Sneha Verma', 'Call Later', '+91 9823456782', '2:15 PM, Mon, 11 Oct', '2m 45s CONNECTED')">
+                            <h4>Sneha Verma</h4>
+                            <p>Status: Call Later</p>
+                            <p>2:15 PM, Mon, 11 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Arjun Singh', 'Completed', '+91 9823456783', '4:00 PM, Sat, 9 Oct', '3m 5s CONNECTED')">
+                            <h4>Arjun Singh</h4>
+                            <p>Status: Completed</p>
+                            <p>4:00 PM, Sat, 9 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Priya Kapoor', 'Call Later', '+91 9823456784', '11:15 AM, Fri, 8 Oct', '4m 20s CONNECTED')">
+                            <h4>Priya Kapoor</h4>
+                            <p>Status: Call Later</p>
+                            <p>11:15 AM, Fri, 8 Oct</p>
+                          </div>
+                          <!-- Additional Calls -->
+                          <div class="lead-item" onclick="showCallInfo('Amit Chaudhary', 'Completed', '+91 9823456785', '3:30 PM, Thu, 7 Oct', '2m 55s CONNECTED')">
+                            <h4>Amit Chaudhary</h4>
+                            <p>Status: Completed</p>
+                            <p>3:30 PM, Thu, 7 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Radhika Das', 'Interested', '+91 9823456786', '10:45 AM, Wed, 6 Oct', '6m 15s CONNECTED')">
+                            <h4>Radhika Das</h4>
+                            <p>Status: Interested</p>
+                            <p>10:45 AM, Wed, 6 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Manish Patel', 'Call Later', '+91 9823456787', '9:00 AM, Tue, 5 Oct', '7m 30s CONNECTED')">
+                            <h4>Manish Patel</h4>
+                            <p>Status: Call Later</p>
+                            <p>9:00 AM, Tue, 5 Oct</p>
+                          </div>
+                          <div class="lead-item" onclick="showCallInfo('Naina Gupta', 'Completed', '+91 9823456788', '12:00 PM, Mon, 4 Oct', '4m 45s CONNECTED')">
+                            <h4>Naina Gupta</h4>
+                            <p>Status: Completed</p>
+                            <p>12:00 PM, Mon, 4 Oct</p>
+                          </div>
+                        </div>
+                
+                        <!-- Lead Info Section -->
+                        <div class="info-section" id="lead-info">
+                          <div class="lead-info">
+                            <h2 id="lead-name">Name</h2>
+                            <p>Status: <span id="lead-status">Status</span></p>
+                            <p>Phone: <span id="lead-phone">Phone</span></p>
+                            <p>Acquired: <span id="lead-acquired">Acquired</span></p>
+                          </div>
+                          <div class="actions">
+                            <button>Call</button>
+                            <button>WhatsApp</button>
+                            <button>SMS</button>
+                            <button>Email</button>
+                            <button>Add Note</button>
+                          </div>
+                          <div class="history">
+                            <h4>History</h4>
+                            <div class="history-item" id="lead-history">
+                              <p>History details will appear here.</p>
+                            </div>
+                          </div>
+                        </div>
+                
+                        <!-- Call Info Section -->
+                        <div class="info-section" id="call-info">
+                          <div class="call-info">
+                            <h2 id="call-name">Name</h2>
+                            <p>Status: <span id="call-status">Status</span></p>
+                            <p>Phone: <span id="call-phone">Phone</span></p>
+                            <p>Last Call: <span id="call-time">Time</span></p>
+                          </div>
+                          <div class="actions">
+                            <button>Call</button>
+                            <button>WhatsApp</button>
+                            <button>SMS</button>
+                            <button>Email</button>
+                            <button>Add Note</button>
+                          </div>
+                          <div class="history">
+                            <h4>History</h4>
+                            <div class="history-item" id="call-history">
+                              <p>History details will appear here.</p>
+                            </div>
+                        </div>
             </div>
             <div class="content" id="report" style="display: none;">
                 <h2>Reports</h2>

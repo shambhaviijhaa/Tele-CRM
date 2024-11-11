@@ -261,3 +261,45 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 //splash screen end
 
+//activities start
+ // Show the Leads section
+ function showLeads() {
+    document.getElementById('lead-list').style.display = 'block';
+    document.getElementById('call-list').style.display = 'none';
+    document.getElementById('lead-info').style.display = 'none';
+    document.getElementById('call-info').style.display = 'none';
+  }
+
+  // Show the Calls section
+  function showCalls() {
+    document.getElementById('lead-list').style.display = 'none';
+    document.getElementById('call-list').style.display = 'block';
+    document.getElementById('lead-info').style.display = 'none';
+    document.getElementById('call-info').style.display = 'none';
+  }
+
+  // Display lead info when a lead is clicked
+  function showLeadInfo(name, status, phone, acquired, history) {
+    document.getElementById('lead-info').style.display = 'block';
+    document.getElementById('call-info').style.display = 'none';
+
+    document.getElementById('lead-name').textContent = name;
+    document.getElementById('lead-status').textContent = status;
+    document.getElementById('lead-phone').textContent = phone;
+    document.getElementById('lead-acquired').textContent = acquired;
+    document.getElementById('lead-history').textContent = history;
+  }
+
+  // Display call info when a call is clicked
+  function showCallInfo(name, status, phone, time, history) {
+    document.getElementById('call-info').style.display = 'block';
+    document.getElementById('lead-info').style.display = 'none';
+
+    document.getElementById('call-name').textContent = name;
+    document.getElementById('call-status').textContent = status;
+    document.getElementById('call-phone').textContent = phone;
+    document.getElementById('call-time').textContent = time;
+    document.getElementById('call-history').textContent = history;
+  }
+//activities end
+
