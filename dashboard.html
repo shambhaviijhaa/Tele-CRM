@@ -39,9 +39,9 @@
                     </div>
                     <!-- Submenu for Add Lead -->
                     <ul id="add-lead-submenu" class="sub-menu" style="display: none;">
-                        <li onclick="showSubContent('addByExcel')">Excel</li>
-                        <li onclick="showSubContent('addByManual')">Manual</li>
-                        <li onclick="showSubContent('addByThirdParty')">Third Party</li>
+                        <li onclick="showSubContent('add-lead','addByExcel')">Excel</li>
+                        <li onclick="showSubContent('add-lead','addByManual')">Manual</li>
+                        <li onclick="showSubContent('add-lead','addByThirdParty')">Third Party</li>
                     </ul>
                 </li>
                 <li>
@@ -51,8 +51,8 @@
                     </div>
                     <!-- Submenu for Add Lead -->
                     <ul id="activities-submenu" class="sub-menu" style="display: none;">
-                        <li onclick="showSubContent('myLeads')">My Leads</li>
-                        <li onclick="showSubContent('myCalls')">My Calls</li>
+                        <li onclick="showSubContent('activities','myLeads')">My Leads</li>
+                        <li onclick="showSubContent('activities','myCalls')">My Calls</li>
                     </ul>
                 </li>
                 <li>
@@ -62,9 +62,9 @@
                     </div>
                     <!-- Submenu for Add Lead -->
                     <ul id="report-submenu" class="sub-menu" style="display: none;">
-                        <li onclick="showSubContent('addByExcel')">Leaderboard</li>
-                        <li onclick="showSubContent('addByManual')">Calls Report</li>
-                        <li onclick="showSubContent('addByThirdParty')">Leads Report</li>
+                        <li onclick="showSubContent('report','leaderboard')">Leaderboard</li>
+                        <li onclick="showSubContent('report','call-report')">Calls Report</li>
+                        <li onclick="showSubContent('report','leads-report')">Leads Report</li>
                     </ul>
                 </li>
                 <li>
@@ -413,11 +413,11 @@
                             <li>Sam Taylor - 110 leads converted ($850K total revenue).</li>
                         </ul>
                     </div>
-                    <div id="callReport">
+                    <div id="call-report">
                         <h3>Call Report</h3>
                         <p>View call statistics...</p>
                     </div>
-                    <div id="leadsReport">
+                    <div id="leads-report">
                         <h3>Leads Report</h3>
                         <p>View leads statistics...</p>
                     </div>

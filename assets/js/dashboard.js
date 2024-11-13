@@ -44,19 +44,22 @@ function closeAllSubmenus() {
 }
 
 // Function to show specific subsection content for "Add Lead" and highlight submenu
-function showSubContent(contentId, submenuItem) {
+function showSubContent(sectionId, contentId, submenuItem) {
+    // Hide all other sections
+    var sections = document.getElementsByClassName("content");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
     // Hide all add lead sub-content
     var subContents = document.getElementsByClassName("sub-content");
     for (var i = 0; i < subContents.length; i++) {
         subContents[i].style.display = "none";
     }
-
+    
+    // Show selected section
+    document.getElementById(sectionId).style.display = "block";
     // Show selected sub-content
     document.getElementById(contentId).style.display = "block";
-
-    // Ensure that the "Add Lead" main section is visible
-    showSection('add-lead');
-
     // Remove 'selected' class from all submenu items
     var submenuItems = submenuItem.parentElement.getElementsByTagName("li");
     for (var i = 0; i < submenuItems.length; i++) {
