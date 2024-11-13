@@ -743,7 +743,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     cursor: pointer;
 }
 /* activities */
-#myLeads {
+#myLeads,#myCalls {
     padding: 20px;
     background-color: #f7f8fa;
     display: flex;
@@ -752,7 +752,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 }
 
 /* Flex container for list and info sections */
-.lead-container {
+.lead-container,.call-container {
     display: flex;
     gap: 20px;
     width: 100%;
@@ -769,12 +769,12 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
 }
-#lead-info {
+#lead-info,#call-info {
     display: flex;
     flex-direction: column;
 }
 /* Individual lead items in the list */
-.lead-item {
+.lead-item,.call-item {
     padding: 15px;
     margin-bottom: 10px;
     border-bottom: 1px solid #e0e0e0;
@@ -783,16 +783,16 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     border-radius: 5px;
 }
 
-.lead-item:hover {
+.lead-item:hover,.call-item:hover {
     background-color: #f5f5f5;
 }
 
-.lead-item h4 {
+.lead-item h4,.call-item h4 {
     font-size: 1.1rem;
     color: #333;
 }
 
-.lead-item p {
+.lead-item p,.call-item p {
     font-size: 0.9rem;
     color: #777;
 }
@@ -823,7 +823,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 
 /* Ensure the layout is responsive */
 @media (max-width: 768px) {
-    .lead-container {
+    .lead-container,.call-container {
         flex-direction: column;
     }
 
