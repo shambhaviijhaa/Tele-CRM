@@ -314,76 +314,38 @@
                 <div id="addByManual" class="sub-content" style="display: none;">
                     <form id="add-lead-form">
                       <div class="form-container">
-                        <form id="leadForm">
-                          <div class="form-group">
-                            <label for="name">NAME:<span class="text-red-600">*</span></label>
-                            <input type="text" id="name" name="name" placeholder="Enter Name" required>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="phone">PHONE:<span class="text-red-600">*</span></label>
-                            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="email">EMAIL:</label>
-                            <input type="text" id="email" name="collegeName" placeholder="abc@xyz.com" required>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="alternatePhone">ALTERNATE PHONE:</label>
-                            <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate number">
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="stream">STREAM:</label>
-                            <select id="stream" name="stream" data-placeholder="Choose stream">
-                              <option value="">Choose stream</option>
-                              <option value="">BCA</option>
-                              <option value="">BBA</option>
-                              <option value="">BTECH</option>
-                              <option value="">MCA</option>
-                            </select>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="year">YEAR:</label>
-                            <input type="number" id="year" name="year" placeholder="Enter Year" required>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="address">ADDRESS:</label>
-                            <textarea id="address" name="address" placeholder="Enter Address" required></textarea>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="interestedIn">INTERESTED IN:</label>
-                            <select id="interestedIn" name="interestedIn" required>
-                                <option value="">Full Stack Development</option>
-                                <option value="">Digital Marketing</option>
-                                <option value="">Java</option>
-                                <option value="">AI/ML</option>
-                                <option value="">Web Development</option>
-                                </select>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="collegeName">COLLEGE NAME:</label>
-                            <input type="text" id="collegeName" name="collegeName" placeholder="Enter College Name" required>
-                          </div>
-                    
-                          <div class="form-group">
-                            <label for="counselingDate">COUNSELING DATE:</label>
-                            <input type="date" id="counselingDate" name="counselingDate" required>
-                          </div>
-                    
-                          <div class="form-group">
-                            <button type="submit">Add Lead</button>
-                          </div>
-                        </form>
+                        <div class="form-group">
+                          <label for="name">NAME:<span class="text-red-600">*</span></label>
+                          <input type="text" id="name" name="name" placeholder="Enter Name" required>
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="phone">PHONE:<span class="text-red-600">*</span></label>
+                          <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="email">EMAIL:</label>
+                          <input type="email" id="email" name="email" placeholder="abc@xyz.com">
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="alternatePhone">ALTERNATE PHONE:</label>
+                          <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate phone number">
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="acquired">ACQUIRED (Date):</label>
+                          <input type="date" id="acquired" name="acquired" required>
+                        </div>
+                
+                        <div class="form-group">
+                          <button type="submit">Add Lead</button>
+                        </div>
                       </div>
                     </form>
                 </div>
+                
                 <div id="addByThirdParty" class="sub-content" style="display: none;">
                     <h3>Add by Third Party</h3>
                     <p>Integrate with third-party services...</p>

@@ -304,3 +304,33 @@ function showCallInfo(name, status, phone, time, history) {
     document.getElementById('call-time').textContent = time;
     document.getElementById('call-history').textContent = history;
 }
+
+// lead
+  document.getElementById('add-lead-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Collect form data
+    const leadData = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      alternatePhone: document.getElementById('alternatePhone').value,
+      acquired: document.getElementById('acquired').value,
+    };
+
+    // Make POST request to the backend
+    fetch('http://localhost:5000/api/leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(leadData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        alert('Lead added successfully!');
+        // Optionally reset the form
+        document.getElementById('add-lead-form').reset();
+      })
+      .catch(error => console.error('Error adding lead:', error));
+  });
