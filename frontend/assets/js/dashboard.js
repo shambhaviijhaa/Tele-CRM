@@ -305,32 +305,75 @@ function showCallInfo(name, status, phone, time, history) {
     document.getElementById('call-history').textContent = history;
 }
 
-// lead
-  document.getElementById('add-lead-form').addEventListener('submit', function (e) {
+// Function to fetch and display all leads from the backend
+async function fetchLeads() {
+    try {
+        const response = await fetch('http://localhost:5000/api/leads');  // API endpoint for fetching leads
+        const leads = await response.json();
+        const leadList = document.getElementById('lead-list');
+        leadList.innerHTML = '';
+
+        // Populate the leads list dynamically
+        leads.forEach(lead => {
+            leadList.innerHTML += `
+                <div class="lead-item" onclick="showLeadInfo('${lead.name}', 'Fresh', '${lead.phone}', 'Acquired: ${new Date(lead.acquired).toLocaleString()}')">
+                    <h4>${lead.name}</h4>
+                    <p>Phone: ${lead.phone}</p>
+                    <p>Acquired: ${new Date(lead.acquired).toLocaleString()}</p>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error('Error fetching leads:', error);
+    }
+}
+
+// Display lead info when a lead is clicked
+function showLeadInfo(name, status, phone, acquired, history) {
+    document.getElementById('lead-info').style.display = 'block';
+    document.getElementById('call-info').style.display = 'none';
+
+    document.getElementById('lead-name').textContent = name;
+    document.getElementById('lead-status').textContent = status;
+    document.getElementById('lead-phone').textContent = phone;
+    document.getElementById('lead-acquired').textContent = acquired;
+    document.getElementById('lead-history').textContent = history;
+}
+
+// Submit new lead to the backend
+document.getElementById('add-lead-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Collect form data
     const leadData = {
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      email: document.getElementById('email').value,
-      alternatePhone: document.getElementById('alternatePhone').value,
-      acquired: document.getElementById('acquired').value,
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        alternatePhone: document.getElementById('alternatePhone').value,
+        acquired: document.getElementById('acquired').value,
     };
 
-    // Make POST request to the backend
+    // Send POST request to add the lead
     fetch('http://localhost:5000/api/leads', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(leadData),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(leadData),
     })
-      .then(response => response.json())
-      .then(data => {
-        alert('Lead added successfully!');
-        // Optionally reset the form
-        document.getElementById('add-lead-form').reset();
-      })
-      .catch(error => console.error('Error adding lead:', error));
-  });
+        .then(response => response.json())
+        .then(data => {
+            alert('Lead added successfully!');
+            document.getElementById('add-lead-form').reset();  // Reset form after submission
+            fetchLeads();  // Refresh leads list
+        })
+        .catch(error => {
+            console.error('Error adding lead:', error);
+            alert('Failed to add lead');
+        });
+});
+
+// On page load, fetch and display all leads
+document.addEventListener('DOMContentLoaded', function () {
+    fetchLeads();
+});

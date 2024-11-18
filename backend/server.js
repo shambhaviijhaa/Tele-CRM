@@ -1,5 +1,6 @@
 // backend/server.js
 const express = require('express');
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -17,6 +18,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 // Import routes
 const userRoutes = require('./routes/userRoutes');

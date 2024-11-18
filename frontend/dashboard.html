@@ -269,7 +269,7 @@
                 <h2>Search Leads</h2>
                 <!-- Search Bar with Icon -->
                 <div class="search-wrapper">
-                    <input type="text" class="search-bar" placeholder="Search leads..." oninput="searchLeads(this.value)">
+                    <input type="text" class="search-bar" placeholder="Search leads..." oninput="searchLeads()">
                     <button class="search-icon" onclick="searchLeads()">
                         <i class="fas fa-search"></i>
                     </button>
@@ -281,15 +281,15 @@
                     <div class="filter-options">
                         <div class="filter-option">
                             <label for="filter-name">Name</label>
-                            <input type="text" id="filter-name" class="search-bar" placeholder="Enter name..." oninput="filterByName(this.value)">
+                            <input type="text" id="filter-name" class="search-bar" placeholder="Enter name..." oninput="searchLeads()">
                         </div>
                         <div class="filter-option">
                             <label for="filter-phone">Phone</label>
-                            <input type="text" id="filter-phone" class="search-bar" placeholder="Enter phone..." oninput="filterByPhone(this.value)">
+                            <input type="text" id="filter-phone" class="search-bar" placeholder="Enter phone..." oninput="searchLeads()">
                         </div>
                         <div class="filter-option">
                             <label for="filter-email">Email</label>
-                            <input type="email" id="filter-email" class="search-bar" placeholder="Enter email..." oninput="filterByEmail(this.value)">
+                            <input type="email" id="filter-email" class="search-bar" placeholder="Enter email..." oninput="searchLeads()">
                         </div>
                     </div>
                 </div>
@@ -297,6 +297,7 @@
                 <!-- Results -->
                 <div id="search-result">
                     <h3>Search Result:</h3>
+                    <div id="search-results-list"></div>
                 </div>
             </div>            
             <div class="content" id="add-lead" style="display: none;">
@@ -318,33 +319,33 @@
                           <label for="name">NAME:<span class="text-red-600">*</span></label>
                           <input type="text" id="name" name="name" placeholder="Enter Name" required>
                         </div>
-                
+                  
                         <div class="form-group">
                           <label for="phone">PHONE:<span class="text-red-600">*</span></label>
                           <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
                         </div>
-                
+                  
                         <div class="form-group">
                           <label for="email">EMAIL:</label>
                           <input type="email" id="email" name="email" placeholder="abc@xyz.com">
                         </div>
-                
+                  
                         <div class="form-group">
                           <label for="alternatePhone">ALTERNATE PHONE:</label>
                           <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate phone number">
                         </div>
-                
+                  
                         <div class="form-group">
                           <label for="acquired">ACQUIRED (Date):</label>
                           <input type="date" id="acquired" name="acquired" required>
                         </div>
-                
+                  
                         <div class="form-group">
                           <button type="submit">Add Lead</button>
                         </div>
                       </div>
                     </form>
-                </div>
+                </div>                  
                 
                 <div id="addByThirdParty" class="sub-content" style="display: none;">
                     <h3>Add by Third Party</h3>
