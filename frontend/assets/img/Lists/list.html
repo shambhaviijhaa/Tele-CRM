@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Custom Lists</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="custom-my-lists">
+        <h2>My Custom Lists</h2>
+        <ul id="custom-list-container"></ul>
+        <button id="custom-create-list-btn">Create New List</button>
+    </div>
+
+    <div id="custom-create-list-modal" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-close">&times;</span>
+            <h2>Create List</h2>
+            <input type="text" id="custom-list-name" placeholder="List Name">
+            
+            <!-- Container for color picker with placeholder -->
+            <div class="custom-color-picker-container">
+                <label for="custom-list-color" id="custom-color-placeholder">Choose Color</label>
+                <input type="color" id="custom-list-color">
+            </div>
+            <button id="custom-cancel-btn">Cancel</button>
+            <button id="custom-proceed-btn">Proceed</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

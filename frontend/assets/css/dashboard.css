@@ -1,0 +1,833 @@
+
+/* Basic Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 56px;
+    background: #000204bd;
+    color: #ecf0f1;
+    padding: 15px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 1px;
+}
+
+.nav-list li {
+    margin: 20px 0;
+}
+
+.icon-container {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon-container i {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.icon-name {
+    font-size: 14px;
+    display: none;
+    color: #ecf0f1;
+}
+
+.icon-container:hover .icon-name {
+    display: block; /* Show the name on hover */
+}
+
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* color: #ecf0f1; */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .user-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.user-info{
+    color: #f1f1f1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Centering text inside the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000204bd;
+}
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between elements */
+}
+
+.notification-container {
+    position: relative;
+    cursor: pointer;
+    color: #000204bd; /* Change color as needed */
+    margin-left: 20px; /* Add some space between the user icon and notification */
+    font-size: 18px;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+
+.settings-button {
+    font-size: 18px;
+    color: #000204bd;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #434a4e00;
+}
+
+.settings-button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Content Sections */
+.content {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    /* margin-top: 20px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+}
+/* Sidebar submenu styling */
+.sub-menu {
+    list-style: none;
+    position: absolute;
+    left: 80px; /* Positioning the submenu to the right of the sidebar */
+    top: 10%;
+    background-color: #34495e; /* Background color for submenu */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow for floating effect */
+    z-index: 1; /* Ensures the submenu floats above other content */
+    display: none; /* Hidden by default */
+}
+
+.sub-menu li {
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #ecf0f1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sub-menu li:hover {
+    background-color: #3c637d;
+}
+
+/* Make sure to add padding to avoid overlapping with the sidebar */
+.sidebar {
+    position: relative;
+}
+
+
+/* Main content for subsections */
+.sub-content {
+    padding: 20px;
+    background-color: #f4f4f4;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Section */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 97%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: -10px;
+    background-color: #f4f4f4;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
+.search-icon {
+    background-color: #000204bd;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-icon i {
+    font-size: 18px;
+}
+
+.filter-section {
+    margin-top: 20px;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-option {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.filter-option input {
+    width: 97%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* add lead */
+.form-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #747272;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px; /* Increase font size to 18px */
+}
+
+button {
+  padding: 10px 20px;
+  color: white;
+  background-color: #44a40f;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-group select:not(:focus) {
+  color: #999;
+}
+
+/* add excel start */
+.excel-upload-body {
+    font-family: Arial, sans-serif;
+    /* margin: 20px; */
+  }
+  
+  /* Input Field */
+  #excelFileInput {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Button */
+  .excel-upload-button {
+    padding: 8px 16px;
+    background-color: #000204bd; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Data Display */
+  .excel-upload-data-display {
+    border: 1px solid #ccc;
+    border-collapse: collapse; /* For table borders */
+    margin-top: 20px; /* Add some space after button */
+  }
+  
+.excel-upload-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.excel-upload-th, .excel-upload-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.excel-upload-th {
+    background-color: #f2f2f2;
+}
+.excel-upload-tr:hover {
+    background-color: #f1f1f1;
+}
+/* add excel end */
+
+ /*add list start*/
+  /* General body styles */
+/* body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+} */
+
+/* My Custom Lists container */
+.custom-my-lists {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-my-lists h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* List container styles */
+ /* Styles specific to the custom list component */
+.custom-my-lists ul {
+    list-style: none;
+    padding: 0;
+}
+
+.custom-my-lists li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
+}
+
+.custom-my-lists li:hover {
+    background-color: #f0f0f5;
+}
+
+
+/* Custom Modal styling */
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: auto;
+}
+
+.custom-modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-close {
+    color: #888;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.custom-close:hover {
+    color: #333;
+}
+
+/* Button styles */
+/* button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #ccc;
+}
+
+button:hover {
+    background-color: #e6e6e6;
+} */
+
+/* Create and action buttons */
+#custom-proceed-btn, #custom-create-list-btn {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+}
+
+#custom-proceed-btn:hover, #custom-create-list-btn:hover {
+    background-color: #44a40f;
+}
+
+#custom-cancel-btn {
+    background-color: #ccc;
+}
+
+#custom-cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+
+/* Edit and delete buttons inside list items */
+.custom-list-buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.custom-list-buttons button.custom-edit {
+    background-color: #28a745;
+    color: white;
+}
+
+.custom-list-buttons button.custom-edit:hover {
+    background-color: #218838;
+}
+
+.custom-list-buttons button.custom-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.custom-list-buttons button.custom-delete:hover {
+    background-color: #c82333;
+}
+
+/* Custom Input fields in modal */
+input[type="text"], input[type="color"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+}
+
+input[type="color"] {
+    padding: 5px;
+    height: 40px;
+    border: none;
+}
+
+/* Color picker container */
+.custom-color-picker-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    margin-bottom: 20px;
+}
+
+/* Placeholder styling for color picker */
+.custom-color-placeholder {
+    position: absolute;
+    left: 50%; /* Move the placeholder to the middle horizontally */
+    top: 50%; /* Move the placeholder to the middle vertically */
+    transform: translate(-50%, -50%); /* Center the placeholder */
+    pointer-events: none;
+    color: #888;
+    font-size: 14px;
+    transition: 0.3s ease;
+    text-align: center;
+    z-index: 1; /* Ensure placeholder stays above color input */
+}
+
+/* Style the color input */
+input[type="color"].custom-color-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent; /* Make background transparent */
+    cursor: pointer;
+    position: relative;
+    z-index: 2; /* Keep color input above other elements */
+}
+
+/* Hide placeholder when color is selected */
+input[type="color"].custom-color-input:focus + .custom-color-placeholder,
+input[type="color"].custom-color-input:valid + .custom-color-placeholder {
+    opacity: 0;
+    visibility: hidden;
+}
+  /*add list end*/
+
+/* Splash screen styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2e6e0b; /* Or any background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    animation: fadeOut 1s ease forwards; /* Animates the fade-out */
+    animation-delay: 3s; /* Delay before it fades out */
+}
+
+/* Logo animation */
+#splash-logo {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInScale 1.5s ease forwards; /* Fade in and scale effect */
+}
+
+/* Keyframes for the logo's fade-in and scale effect */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Start smaller */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* End at full size */
+    }
+}
+
+/* Keyframes for fading out the splash screen */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden; /* Hide the splash screen */
+    }
+}
+
+/* Pulsing effect for subtle size changes */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Slight enlargement */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.dashboard-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.top-bar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #3d3d3d;
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.date-and-settings {
+    display: flex;
+    align-items: center;
+}
+
+.date-button, .settings-icon {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.info-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.info-box {
+    background-color: white;
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 10px;
+}
+
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #3d3d3d;
+}
+
+.last-updated {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.filter-options {
+    display: flex;
+    align-items: center;
+}
+
+.filter-options input {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.date-button-small {
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.performance-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.performance-table th, .performance-table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.performance-table th {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.performance-table td {
+    background-color: white;
+    color: #3d3d3d;
+}
+
+.performance-table .total-row td {
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+.avatar {
+    display: inline-block;
+    background-color: #e0e7ff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: #4f46e5;
+    margin-right: 10px;
+}
+
+.follow-up-content {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.no-data {
+    font-size: 1rem;
+    color: #6c757d;
+    cursor: pointer;
+}
+/* activities */
+#myLeads,#myCalls {
+    padding: 20px;
+    background-color: #f7f8fa;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* Flex container for list and info sections */
+.lead-container,.call-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* List of leads (left side) */
+.list-section {
+    width: 30%;
+    background-color: #fff;
+    padding: 15px;
+    padding-right: 10px;
+    max-height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+#lead-info,#call-info {
+    display: flex;
+    flex-direction: column;
+}
+/* Individual lead items in the list */
+.lead-item,.call-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.lead-item:hover,.call-item:hover {
+    background-color: #f5f5f5;
+}
+
+.lead-item h4,.call-item h4 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.lead-item p,.call-item p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Info section (right side) */
+.info-section {
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 450px;
+}
+
+/* Info section text styling */
+.info-section h2 {
+    font-size: 1.6rem;
+    color: #5c51ef;
+}
+
+.info-section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Ensure the layout is responsive */
+@media (max-width: 768px) {
+    .lead-container,.call-container {
+        flex-direction: column;
+    }
+
+    .list-section, .info-section {
+        width: 100%;
+    }
+}

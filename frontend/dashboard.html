@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="splash-screen">
+        <img src="assets/img/crm logo.png" alt="Logo" id="splash-logo">
+    </div>
+
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="assets/img/crm logo.png" alt="logo" width="50" height="50">
+                <h2>CRM</h2>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <div class="icon-container" onclick="showSection('dashboard')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="icon-name">Dashboard</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="showSection('search')">
+                        <i class="fas fa-search"></i>
+                        <span class="icon-name">Search</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="toggleSubsection('add-lead-submenu')">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="icon-name">Add Lead</span>
+                    </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="add-lead-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('add-lead','addByExcel')">Excel</li>
+                        <li onclick="showSubContent('add-lead','addByManual')">Manual</li>
+                        <li onclick="showSubContent('add-lead','addByThirdParty')">Third Party</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="toggleSubsection('activities-submenu')">
+                        <i class="fas fa-tasks"></i>
+                        <span class="icon-name">Activities</span>
+                    </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="activities-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('activities','myLeads')">My Leads</li>
+                        <li onclick="showSubContent('activities','myCalls')">My Calls</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="toggleSubsection('report-submenu')">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="icon-name">Reports</span>
+                    </div>
+                    <!-- Submenu for Add Lead -->
+                    <ul id="report-submenu" class="sub-menu" style="display: none;">
+                        <li onclick="showSubContent('report','leaderboard')">Leaderboard</li>
+                        <li onclick="showSubContent('report','call-report')">Calls Report</li>
+                        <li onclick="showSubContent('report','leads-report')">Leads Report</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="showSection('integrations')">
+                        <i class="fas fa-plug"></i>
+                        <span class="icon-name">Integrations</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon-container" onclick="showSection('lists')">
+                        <i class="fas fa-clipboard-list"></i> <!-- Assuming 'fa-list' as the icon -->
+                        <span class="icon-name">Lists</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar with Search and User Info -->
+            <div class="top-bar">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <div class="user-info">
+                    <span class="user-name">UN</span>
+                </div>
+                <div class="top-right">
+                    <div class="notification-container">
+                        <i class="fas fa-bell"></i> <!-- Notification bell icon -->
+                        <span class="notification-count">3</span> <!-- Notification count -->
+                    </div>
+                    <button class="settings-button">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Content Sections -->
+            <div class="content" id="dashboard" style="display: block;">
+                <div class="dashboard-container">
+                    <div class="top-bar">
+                        <h2>Dashboard <span class="refresh-icon">🔄</span></h2>
+                        <div class="date-and-settings">
+                            <button class="date-button">Today ▼</button>
+                            <button class="settings-icon">⚙️</button>
+                        </div>
+                    </div>
+                
+                    <div class="info-boxes">
+                        <!-- Activity & Performance Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <table class="performance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Assignee</th>
+                                        <th>Calls</th>
+                                        <th>Duration</th>
+                                        <th>Revenue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>Total</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <!-- Follow Ups Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <div class="follow-up-content">
+                                <p class="no-data">+ Add follow up</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-boxes">
+                        <!-- Activity & Performance Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <table class="performance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Assignee</th>
+                                        <th>Calls</th>
+                                        <th>Duration</th>
+                                        <th>Revenue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>Total</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <!-- Follow Ups Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <div class="follow-up-content">
+                                <p class="no-data">+ Add follow up</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-boxes">
+                        <!-- Activity & Performance Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <table class="performance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Assignee</th>
+                                        <th>Calls</th>
+                                        <th>Duration</th>
+                                        <th>Revenue</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>Total</td>
+                                        <td>4</td>
+                                        <td>1m</td>
+                                        <td>₹0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <!-- Follow Ups Box -->
+                        <div class="info-box">
+                            <div class="box-header">
+                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
+                                <div class="filter-options">
+                                    <input type="text" placeholder="Search by assignee">
+                                    <button class="date-button-small">Today ▼</button>
+                                </div>
+                            </div>
+                            <div class="follow-up-content">
+                                <p class="no-data">+ Add follow up</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="content" id="search" style="display: none;">
+                <h2>Search Leads</h2>
+                <!-- Search Bar with Icon -->
+                <div class="search-wrapper">
+                    <input type="text" class="search-bar" placeholder="Search leads..." oninput="searchLeads()">
+                    <button class="search-icon" onclick="searchLeads()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            
+                <!-- Filter Options Section -->
+                <div class="filter-section">
+                    <h3>Filter By:</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <label for="filter-name">Name</label>
+                            <input type="text" id="filter-name" class="search-bar" placeholder="Enter name..." oninput="searchLeads()">
+                        </div>
+                        <div class="filter-option">
+                            <label for="filter-phone">Phone</label>
+                            <input type="text" id="filter-phone" class="search-bar" placeholder="Enter phone..." oninput="searchLeads()">
+                        </div>
+                        <div class="filter-option">
+                            <label for="filter-email">Email</label>
+                            <input type="email" id="filter-email" class="search-bar" placeholder="Enter email..." oninput="searchLeads()">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Results -->
+                <div id="search-result">
+                    <h3>Search Result:</h3>
+                    <div id="search-results-list"></div>
+                </div>
+            </div>            
+            <div class="content" id="add-lead" style="display: none;">
+                <h2>Add New Leads</h2>
+                <div id="addByExcel" class="sub-content" style="display: none;">
+                    <h3>Add by Excel</h3>
+                    <p>Upload your Excel file...</p>
+                    <body class="excel-upload-body">
+                        <input type="file" id="excelFileInput" accept=".xlsx, .xls">
+                        <button class="excel-upload-button" onclick="uploadAndDisplay()">Upload and View</button>
+                        <div id="excelDataDisplay" class="excel-upload-data-display"></div>
+                        <script src="https://cdn.jsdelivr.net/npm/xlsx@latest/dist/xlsx.full.min.js"></script>
+                    </body>
+                </div>
+                <div id="addByManual" class="sub-content" style="display: none;">
+                    <form id="add-lead-form">
+                      <div class="form-container">
+                        <div class="form-group">
+                          <label for="name">NAME:<span class="text-red-600">*</span></label>
+                          <input type="text" id="name" name="name" placeholder="Enter Name" required>
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="phone">PHONE:<span class="text-red-600">*</span></label>
+                          <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="email">EMAIL:</label>
+                          <input type="email" id="email" name="email" placeholder="abc@xyz.com">
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="alternatePhone">ALTERNATE PHONE:</label>
+                          <input type="tel" id="alternatePhone" name="alternatePhone" placeholder="Enter alternate phone number">
+                        </div>
+                  
+                        <div class="form-group">
+                          <label for="acquired">ACQUIRED (Date):</label>
+                          <input type="date" id="acquired" name="acquired" required>
+                        </div>
+                  
+                        <div class="form-group">
+                          <button type="submit">Add Lead</button>
+                        </div>
+                      </div>
+                    </form>
+                </div>                  
+                
+                <div id="addByThirdParty" class="sub-content" style="display: none;">
+                    <h3>Add by Third Party</h3>
+                    <p>Integrate with third-party services...</p>
+                </div>
+            </div>
+            <div class="content" id="activities" style="display: none;">
+                <h2>Activities</h2>
+            
+                <!-- Tabs for Leads and Calls -->
+                <div class="tabs">
+                    <button class="tab active" onclick="showLeads()">Leads (287)</button>
+                    <button class="tab" onclick="showCalls()">Calls (204)</button>
+                </div>
+            
+                <!-- Leads Section -->
+                <div id="myLeads" class="sub-content">
+                    <div class="lead-container">
+                        <!-- List of leads (scrollable area) -->
+                        <div class="list-section" id="lead-list">
+                            <h2><i>Leads</i></h2>
+                            <!-- Scrollable list of lead items -->
+                            <div class="lead-item" onclick="showLeadInfo('Neelima Gokhoru', 'Fresh', '+91 9812345678', '12:18 PM, Mon, 21 Oct', 'Lead Added by Neelima')">
+                                <h4>Neelima Gokhoru</h4>
+                                <p>Status: Fresh</p>
+                                <p>12:18 PM, Mon, 21 Oct</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Mrs. Latika Jha', 'Fresh', '+91 9812345679', '12:04 PM, Mon, 21 Oct', 'Lead Added by Latika')">
+                                <h4>Mrs. Latika Jha</h4>
+                                <p>Status: Fresh</p>
+                                <p>12:04 PM, Mon, 21 Oct</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Shambhavi Jha', 'Call Later', '+91 9812345680', '1:45 PM, Thu, 17 Oct', 'Lead Added by Shambhavi')">
+                                <h4>Shambhavi Jha</h4>
+                                <p>Status: Call Later</p>
+                                <p>1:45 PM, Thu, 17 Oct</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Pl Sharma Parishkar', 'Fresh', '+91 9812345681', '1:20 PM, Wed, 11 Sep', 'Lead Added by Sharma')">
+                                <h4>Pl Sharma Parishkar</h4>
+                                <p>Status: Fresh</p>
+                                <p>1:20 PM, Wed, 11 Sep</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Anjali Das', 'Interested', '+91 9812345682', '4:35 PM, Fri, 29 Sep', 'Lead Added by Anjali')">
+                                <h4>Anjali Das</h4>
+                                <p>Status: Interested</p>
+                                <p>4:35 PM, Fri, 29 Sep</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Rajesh Kumar', 'Fresh', '+91 9812345683', '3:50 PM, Thu, 28 Sep', 'Lead Added by Rajesh')">
+                                <h4>Rajesh Kumar</h4>
+                                <p>Status: Fresh</p>
+                                <p>3:50 PM, Thu, 28 Sep</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Sarita Verma', 'Call Later', '+91 9812345684', '11:30 AM, Wed, 27 Sep', 'Lead Added by Sarita')">
+                                <h4>Sarita Verma</h4>
+                                <p>Status: Call Later</p>
+                                <p>11:30 AM, Wed, 27 Sep</p>
+                            </div>
+                            <div class="lead-item" onclick="showLeadInfo('Kartik Mehra', 'Interested', '+91 9812345685', '5:00 PM, Tue, 26 Sep', 'Lead Added by Kartik')">
+                                <h4>Kartik Mehra</h4>
+                                <p>Status: Interested</p>
+                                <p>5:00 PM, Tue, 26 Sep</p>
+                            </div>
+                        </div>
+
+                        <!-- Lead Info Section -->
+                        <div class="info-section" id="lead-info" style="display: none;">
+                            <div class="lead-info">
+                                <h2 id="lead-name">Name</h2>
+                                <p>Status: <span id="lead-status">Status</span></p>
+                                <p>Phone: <span id="lead-phone">Phone</span></p>
+                                <p>Acquired: <span id="lead-acquired">Acquired</span></p>
+                            </div>
+                            <div class="actions">
+                                <button>Call</button>
+                                <button>WhatsApp</button>
+                                <button>SMS</button>
+                                <button>Email</button>
+                                <button>Add Note</button>
+                            </div>
+                            <div class="history">
+                                <h4>History</h4>
+                                <div class="history-item" id="lead-history">
+                                    <p>History details will appear here.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Calls Section -->
+                <div id="myCalls" class="sub-content" style="display: none;">
+                    <div class="call-container">
+                        <!-- List of calls (scrollable area) -->
+                        <div class="list-section" id="call-list">
+                            <h2><i>Calls</i></h2>
+                            <!-- Scrollable list of call items -->
+                            <div class="call-item" onclick="showCallInfo('Rohit Sharma', 'Completed', '+91 9823456781', '3:20 PM, Tue, 12 Oct', '5m 10s CONNECTED')">
+                                <h4>Rohit Sharma</h4>
+                                <p>Status: Completed</p>
+                                <p>3:20 PM, Tue, 12 Oct</p>
+                            </div>
+                            <div class="call-item" onclick="showCallInfo('Anil Kumar', 'Missed', '+91 9823456782', '2:15 PM, Tue, 12 Oct', '2m 30s MISSED')">
+                                <h4>Anil Kumar</h4>
+                                <p>Status: Missed</p>
+                                <p>2:15 PM, Tue, 12 Oct</p>
+                            </div>
+                            <div class="call-item" onclick="showCallInfo('Ayesha Singh', 'Completed', '+91 9823456783', '11:00 AM, Mon, 11 Oct', '3m 15s CONNECTED')">
+                                <h4>Ayesha Singh</h4>
+                                <p>Status: Completed</p>
+                                <p>11:00 AM, Mon, 11 Oct</p>
+                            </div>
+                            <!-- Additional call items ... -->
+                        </div>
+                        <!-- Call Info Section -->
+                        <div class="info-section" id="call-info" style="display: none;">
+                            <div class="call-info">
+                                <h2 id="call-name">Name</h2>
+                                <p>Status: <span id="call-status">Status</span></p>
+                                <p>Phone: <span id="call-phone">Phone</span></p>
+                                <p>Last Call: <span id="call-time">Time</span></p>
+                            </div>
+                            <div class="actions">
+                                <button>Call</button>
+                                <button>WhatsApp</button>
+                                <button>SMS</button>
+                                <button>Email</button>
+                                <button>Add Note</button>
+                            </div>
+                            <div class="history">
+                                <h4>History</h4>
+                                <div class="history-item" id="call-history">
+                                    <p>History details will appear here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content" id="report" style="display: none;">
+                <h2>Reports</h2>
+                <div id="report-options">
+                    <div id="leaderboard">
+                        <h3>Leaderboard</h3>
+                        <ul class="leaderboard-list">
+                            <li>John Doe - 150 leads converted ($1.2M total revenue).</li>
+                            <li>Jane Smith - 130 leads converted ($1.0M total revenue).</li>
+                            <li>Sam Taylor - 110 leads converted ($850K total revenue).</li>
+                        </ul>
+                    </div>
+                    <div id="call-report">
+                        <h3>Call Report</h3>
+                        <p>View call statistics...</p>
+                    </div>
+                    <div id="leads-report">
+                        <h3>Leads Report</h3>
+                        <p>View leads statistics...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content" id="integrations" style="display: none;">
+                <h2>Integrations</h2>
+                <p>Connect your account to Gmail and Google Drive for seamless integration.</p>
+                <div>
+                    <h3>Gmail Integration</h3>
+                    <button onclick="integrateGmail()">Integrate Gmail</button>
+                </div>
+                <div>
+                    <h3>Google Drive Integration</h3>
+                    <button onclick="integrateGoogleDrive()">Integrate Google Drive</button>
+                </div>
+            </div>
+
+            <div class="content" id="lists" style="display: none;">
+                <div class="custom-my-lists">
+                    <h2><strong>Custom Lists</strong></h2>
+                    <ul id="custom-list-container"></ul>
+                    <button id="custom-create-list-btn">Create New List</button>
+                </div>
+                
+                <div id="custom-create-list-modal" class="custom-modal">
+                    <div class="custom-modal-content">
+                        <span class="custom-close">&times;</span>
+                        <h2>Create List</h2>
+                        <input type="text" id="custom-list-name" placeholder="List Name">
+                        
+                        <div class="custom-color-picker-container">
+                            <label for="custom-list-color" id="custom-color-placeholder">Choose Color</label>
+                            <input type="color" id="custom-list-color">
+                        </div>
+                
+                        <button id="custom-cancel-btn">Cancel</button>
+                        <button id="custom-proceed-btn">Proceed</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
