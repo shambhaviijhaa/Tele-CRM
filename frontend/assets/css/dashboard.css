@@ -15,7 +15,7 @@ body, html {
 /* Sidebar */
 .sidebar {
     width: 56px;
-    background: #172734;
+    background: #000204bd;
     color: #ecf0f1;
     padding: 15px;
 }
@@ -95,7 +95,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #172734;
+    background-color: #000204bd;
 }
 .top-right {
     display: flex;
@@ -106,7 +106,7 @@ body, html {
 .notification-container {
     position: relative;
     cursor: pointer;
-    color: #172734; /* Change color as needed */
+    color: #000204bd; /* Change color as needed */
     margin-left: 20px; /* Add some space between the user icon and notification */
     font-size: 18px;
 }
@@ -125,7 +125,7 @@ body, html {
 
 .settings-button {
     font-size: 18px;
-    color: #172734;
+    color: #000204bd;
     border: none;
     padding: 8px 12px;
     cursor: pointer;
@@ -210,7 +210,7 @@ h2 {
 }
 
 .search-icon {
-    background-color: #172734;
+    background-color: #000204bd;
     color: white;
     border: none;
     padding: 10px;
@@ -277,7 +277,7 @@ input, select, textarea {
 button {
   padding: 10px 20px;
   color: white;
-  background-color: #00509e;
+  background-color: #44a40f;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -304,7 +304,7 @@ button {
   /* Button */
   .excel-upload-button {
     padding: 8px 16px;
-    background-color: #172734; /* Blue */
+    background-color: #000204bd; /* Blue */
     color: white;
     border: none;
     border-radius: 4px;
@@ -449,7 +449,7 @@ button:hover {
 }
 
 #custom-proceed-btn:hover, #custom-create-list-btn:hover {
-    background-color: #00509e;
+    background-color: #44a40f;
 }
 
 #custom-cancel-btn {
@@ -555,7 +555,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #47527c; /* Or any background color */
+    background-color: #2e6e0b; /* Or any background color */
     display: flex;
     justify-content: center;
     align-items: center;
