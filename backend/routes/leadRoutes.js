@@ -9,4 +9,8 @@ router.get('/:id', leadController.getLeadById);        // Get a single lead by I
 router.put('/:id', leadController.updateLead);         // Update a lead by ID
 router.delete('/:id', leadController.deleteLead);      // Delete a lead by ID
 
+
+// Route to handle Excel data upload
+router.post('/excel-upload', leadController.uploadLeadsFromExcel);
+
 module.exports = router;

@@ -103,61 +103,7 @@ function filterByPhone(phone) {
 // Filter by email
 function filterByEmail(email) {
     console.log("Filtering by email: " + email);
-}
-
-// add excel start
-function uploadAndDisplay() {
-    const fileInput = document.getElementById('excelFileInput');
-    const file = fileInput.files[0];
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(event) {
-            const data = new Uint8Array(event.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
-            const sheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[sheetName];
-
-            const json = XLSX.utils.sheet_to_json(worksheet);
-            displayData(json);
-        };
-
-        reader.readAsArrayBuffer(file);
-    }
-}
-
-function displayData(data) {
-    const dataDisplay = document.getElementById('excelDataDisplay');
-
-    // Create table structure dynamically based on keys in the first object
-    if (data.length === 0) {
-        dataDisplay.innerHTML = '<p>No data available.</p>';
-        return;
-    }
-
-    const headers = Object.keys(data[0]);
-    let table = '<table class="excel-upload-table"><thead><tr>';
-
-    // Create table headers
-    headers.forEach(header => {
-        table += `<th class="excel-upload-th">${header}</th>`;
-    });
-    table += '</tr></thead><tbody>';
-
-    // Populate table rows with data
-    data.forEach(item => {
-        table += '<tr class="excel-upload-tr">';
-        headers.forEach(header => {
-            table += `<td class="excel-upload-td">${item[header] || ''}</td>`;
-        });
-        table += '</tr>';
-    });
-
-    table += '</tbody></table>';
-    dataDisplay.innerHTML = table;
-}
-//add excel end
+}  
 
 document.querySelector('.settings-button').addEventListener('click', function() {
     // Add your settings functionality here
@@ -377,3 +323,79 @@ document.getElementById('add-lead-form').addEventListener('submit', function (e)
 document.addEventListener('DOMContentLoaded', function () {
     fetchLeads();
 });
+
+// Function to handle Excel file upload and send data to the backend
+function uploadAndDisplay() {
+    const fileInput = document.getElementById('excelFileInput');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const data = new Uint8Array(event.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetName = workbook.SheetNames[0];  // Assuming we're working with the first sheet
+            const worksheet = workbook.Sheets[sheetName];
+
+            const json = XLSX.utils.sheet_to_json(worksheet); // Parse to JSON
+
+            // Display the parsed data on the frontend (optional)
+            displayData(json);
+
+            // Send the parsed data to the backend for storing in Leads collection
+            sendExcelDataToBackend(json);
+        };
+
+        reader.readAsArrayBuffer(file);
+    }
+}
+
+// Display Excel data on the frontend (optional)
+function displayData(data) {
+    const dataDisplay = document.getElementById('excelDataDisplay');
+
+    // Create table structure dynamically based on keys in the first object
+    if (data.length === 0) {
+        dataDisplay.innerHTML = '<p>No data available.</p>';
+        return;
+    }
+
+    const headers = Object.keys(data[0]);
+    let table = '<table class="excel-upload-table"><thead><tr>';
+
+    // Create table headers
+    headers.forEach(header => {
+        table += `<th class="excel-upload-th">${header}</th>`;
+    });
+    table += '</tr></thead><tbody>';
+
+    // Populate table rows with data
+    data.forEach(item => {
+        table += '<tr class="excel-upload-tr">';
+        headers.forEach(header => {
+            table += `<td class="excel-upload-td">${item[header] || ''}</td>`;
+        });
+        table += '</tr>';
+    });
+
+    table += '</tbody></table>';
+    dataDisplay.innerHTML = table;
+}
+// Function to send Excel data to the backend
+function sendExcelDataToBackend(excelData) {
+    fetch('http://localhost:5000/api/leads/excel-upload', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(excelData),  // Send the parsed Excel data as JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Excel data uploaded and stored successfully!');
+    })
+    .catch(error => {
+        console.error('Error uploading Excel data:', error);
+    });
+}
