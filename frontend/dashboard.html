@@ -95,7 +95,7 @@
                         <i class="fas fa-bell"></i> <!-- Notification bell icon -->
                         <span class="notification-count">3</span> <!-- Notification count -->
                     </div>
-                    <button class="settings-button">
+                    <button class="settings-button" id="settingsButton">
                         <i class="fas fa-cog"></i>
                     </button>
                 </div>
@@ -111,6 +111,55 @@
                             <button class="settings-icon">⚙️</button>
                         </div>
                     </div>
+
+                    <!-- settings start -->
+                    <div id="settings-container" style="display: none;">
+                        <div class="settings-header">
+                          <h1>Settings</h1>
+                          <button class="close-settings-btn" id="closeSettingsButton">❌</button>
+                        </div>
+                        <div class="settings-content">
+                          <label>
+                            Language:
+                            <select id="language">
+                              <option value="english">English</option>
+                              <option value="spanish">Spanish</option>
+                              <option value="french">French</option>
+                            </select>
+                          </label>
+                          <label for="theme">Choose Theme:
+                            <select id="theme">
+                              <option value="light">Light</option>
+                              <option value="dark">Dark</option>
+                            </select>
+                          </label>
+                          <br><br>
+                          <label>
+                            Notifications:
+                            <input type="checkbox" id="email-notifications"> Email Notifications
+                            <input type="checkbox" id="sms-notifications"> SMS Notifications
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <script>
+                        // Get references to the button and settings container
+                        const settingsButton = document.querySelector(".settings-button");
+                        const closeSettingsButton = document.getElementById("closeSettingsButton");
+                        const settingsContainer = document.getElementById("settings-container");
+
+                        // Show settings when the settings button is clicked
+                        settingsButton.addEventListener("click", () => {
+                        settingsContainer.style.display = "block";
+                        });
+
+                        // Hide settings when the close button is clicked
+                        closeSettingsButton.addEventListener("click", () => {
+                        settingsContainer.style.display = "none";
+                        });
+
+                      </script>
+                    <!-- settings end -->
                 
                     <div class="info-boxes">
                         <!-- Activity & Performance Box -->
