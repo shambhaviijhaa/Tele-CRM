@@ -61,3 +61,24 @@ exports.deleteLead = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+// Controller function to handle Excel upload and store in Leads collection
+exports.uploadLeadsFromExcel = async (req, res) => {
+    const leadsData = req.body;  // The parsed Excel data will be here
+
+    // Iterate over each record and transform it into the required Lead format
+    const formattedLeads = leadsData.map(lead => ({
+        name: lead.NAME || '',  // Use the correct key from the Excel columns
+        phone: lead.PHONE || '',
+        email: lead.EMAIL || '',
+        alternatePhone: lead['ALTERNATE PHONE'] || '',
+        acquired: lead.ACQUIRED ? new Date(lead.ACQUIRED) : new Date(),  // Format date if available
+    }));
+
+    try {
+        // Insert all leads into the Leads collection
+        await Lead.insertMany(formattedLeads);
+        res.status(201).json({ message: 'Leads added successfully!' });
+    } catch (error) {
+        res.status(400).json({ message: 'Error adding leads from Excel.', error });
+    }
+};
