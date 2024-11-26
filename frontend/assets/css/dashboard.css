@@ -872,3 +872,49 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   }
   
 /* settings end */
+/* user profile start */
+.user-name {
+    padding: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.profile-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: calc(100% + 5px); /* Dropdown below the user name */
+    right: 0; /* Align to the right for proper layout */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 100; /* Ensure dropdown is above other content */
+    min-width: 150px;
+}
+
+.profile-dropdown-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+}
+
+.profile-dropdown-item:hover {
+    background-color: rgb(207, 224, 255);
+}
+
+.profile-dropdown-item:active {
+    background-color: #7496da;
+}
+
+/* Override conflicting parent styles if any */
+.top-bar .user-profile-section {
+    margin: 0;
+}
+
+.top-bar {
+    position: relative; /* Ensure the navbar retains its flow */
+    z-index: 10; /* Keep it below the dropdown */
+}
+/* user profile end */

@@ -366,6 +366,28 @@ function sendExcelDataToBackend(excelData) {
         console.error('Error uploading Excel data:', error);
     });
 }
+//  user profile start
+// Show/Hide the profile dropdown when clicking the user name
+document.querySelector('.user-name').addEventListener('click', () => {
+    const dropdown = document.getElementById('profileUserDropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close dropdown if clicked outside
+window.addEventListener('click', (event) => {
+    const dropdown = document.getElementById('profileUserDropdown');
+    const userProfileSection = document.querySelector('.user-profile-section');
+    if (!userProfileSection.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+// Toggle dropdown visibility
+document.querySelector('.profile-user-name').addEventListener('click', () => {
+    const dropdown = document.getElementById('profileUserDropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+//  user profile end
 
 async function searchLeadsByName() {
     const name = document.getElementById('filter-name').value;

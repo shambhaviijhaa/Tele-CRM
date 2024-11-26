@@ -89,6 +89,11 @@
                 <input type="text" class="search-bar" placeholder="Search...">
                 <div class="user-info">
                     <span class="user-name">UN</span>
+                    <div class="profile-dropdown" id="profileUserDropdown">
+                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 1')">User 1</p>
+                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 2')">User 2</p>
+                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 3')">User 3</p>
+                    </div>
                 </div>
                 <div class="top-right">
                     <div class="notification-container">
@@ -100,6 +105,9 @@
                     </button>
                 </div>
             </div>
+
+            
+            
 
             <!-- Dynamic Content Sections -->
             <div class="content" id="dashboard" style="display: block;">
