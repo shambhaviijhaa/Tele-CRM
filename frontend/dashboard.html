@@ -316,39 +316,16 @@
             </div>
             <div class="content" id="search" style="display: none;">
                 <h2>Search Leads</h2>
-                <!-- Search Bar with Icon -->
+            
                 <div class="search-wrapper">
-                    <input type="text" class="search-bar" placeholder="Search leads..." oninput="searchLeads()">
-                    <button class="search-icon" onclick="searchLeads()">
-                        <i class="fas fa-search"></i>
-                    </button>
+                    
+                    <input type="text" class="search-bar" id="filter-name" placeholder="Search by name...">
+<button class="search-icon" onclick="searchLeadsByName()">Search</button>   
                 </div>
-            
-                <!-- Filter Options Section -->
-                <div class="filter-section">
-                    <h3>Filter By:</h3>
-                    <div class="filter-options">
-                        <div class="filter-option">
-                            <label for="filter-name">Name</label>
-                            <input type="text" id="filter-name" class="search-bar" placeholder="Enter name..." oninput="searchLeads()">
-                        </div>
-                        <div class="filter-option">
-                            <label for="filter-phone">Phone</label>
-                            <input type="text" id="filter-phone" class="search-bar" placeholder="Enter phone..." oninput="searchLeads()">
-                        </div>
-                        <div class="filter-option">
-                            <label for="filter-email">Email</label>
-                            <input type="email" id="filter-email" class="search-bar" placeholder="Enter email..." oninput="searchLeads()">
-                        </div>
-                    </div>
-                </div>
-            
-                <!-- Results -->
-                <div id="search-result">
-                    <h3>Search Result:</h3>
-                    <div id="search-results-list"></div>
-                </div>
+                
+                <div id="search-results-list"></div>
             </div>            
+                        
             <div class="content" id="add-lead" style="display: none;">
                 <h2>Add New Leads</h2>
                 <div id="addByExcel" class="sub-content" style="display: none;">

@@ -1,28 +1,15 @@
-// Function to show different sections on click and close open submenus
-function showSection(sectionId, menuItem) {
-    // Close any open submenus
-    closeAllSubmenus();
-
-    // Hide all other sections
-    var sections = document.getElementsByClassName("content");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
+// Function to show different sections on click
+function showSection(sectionId) {
+    // Hide all sections
+    const sections = document.getElementsByClassName('content');
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = 'none'; // Hide all sections
     }
 
     // Show the selected section
-    document.getElementById(sectionId).style.display = "block";
-
-    // Remove 'selected' class from all main menu items
-    var menuItems = document.getElementsByClassName("icon-container");
-    for (var i = 0; i < menuItems.length; i++) {
-        menuItems[i].classList.remove("selected");
-    }
-
-    // Add 'selected' class to the clicked main menu item
-    if (menuItem) {
-        menuItem.classList.add("selected");
-    }
+    document.getElementById(sectionId).style.display = 'block';
 }
+
 
 // Function to toggle the visibility of the "Add Lead" submenu and close others
 function toggleSubsection(submenuId) {
@@ -84,26 +71,6 @@ document.addEventListener('click', function(event) {
 });
 
 
-// Search functionality (example)
-function searchLeads(query) {
-    // Logic for searching leads based on the input query
-    console.log("Searching leads with query: " + query);
-}
-
-// Filter by name
-function filterByName(name) {
-    console.log("Filtering by name: " + name);
-}
-
-// Filter by phone
-function filterByPhone(phone) {
-    console.log("Filtering by phone: " + phone);
-}
-
-// Filter by email
-function filterByEmail(email) {
-    console.log("Filtering by email: " + email);
-}  
 
 document.querySelector('.settings-button').addEventListener('click', function() {
     // Add your settings functionality here
@@ -398,4 +365,34 @@ function sendExcelDataToBackend(excelData) {
     .catch(error => {
         console.error('Error uploading Excel data:', error);
     });
+}
+
+async function searchLeadsByName() {
+    const name = document.getElementById('filter-name').value;
+    try {
+        const response = await fetch(`http://localhost:5000/api/leads/by-name?name=${name}`);
+        const leads = await response.json();
+
+        // Clear existing search results
+        const searchResults = document.getElementById('search-results-list');
+        searchResults.innerHTML = '';
+
+        // Display results
+        if (leads.length === 0) {
+            searchResults.innerHTML = '<p>No leads found.</p>';
+        } else {
+            leads.forEach(lead => {
+                searchResults.innerHTML += `
+                    <div class="lead-item">
+                        <h4>${lead.name}</h4>
+                        <p>Phone: ${lead.phone}</p>
+                        <p>Email: ${lead.email}</p>
+                        <p>Acquired: ${new Date(lead.acquired).toLocaleString()}</p>
+                    </div>
+                `;
+            });
+        }
+    } catch (error) {
+        console.error('Error fetching leads:', error);
+    }
 }

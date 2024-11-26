@@ -10,6 +10,17 @@ exports.getLeads = async (req, res) => {
     }
 };
 
+// Filter by name
+exports.getLeadsByName = async (req, res) => {
+    const { name } = req.query;
+    try {
+        const leads = await Lead.find({ name: { $regex: new RegExp(name, 'i') } });
+        res.json(leads);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 // Create a new lead
 exports.createLead = async (req, res) => {
     const { name, phone, email, alternatePhone, acquired } = req.body;
