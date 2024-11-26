@@ -930,7 +930,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   }
   
   .leaderboard-page .leaderboard {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
@@ -974,3 +974,108 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   }
   
 /* report leaderboard end */
+/* calls report start*/
+/* Scoped for Calls Report Page */
+.calls-report-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.calls-report-page header {
+    color: rgb(44, 55, 100);
+    padding: 5px 5px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.calls-report-page header nav {
+    margin-top: 10px;
+}
+
+.calls-report-page header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.calls-report-page header nav a.active {
+    background-color: #0056b3;
+}
+
+/* Summary Section for Calls Report */
+.calls-report-page .summary {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calls-report-page .stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.calls-report-page .stat {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 10px;
+}
+
+.calls-report-page .stat h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.calls-report-page .stat p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Detailed Report Section for Calls */
+.calls-report-page .detailed-report {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calls-report-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.calls-report-page table th, .calls-report-page table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.calls-report-page table th {
+    background-color: #20354c;
+    color: white;
+}
+
+.calls-report-page table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.calls-report-page table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* calls report end */

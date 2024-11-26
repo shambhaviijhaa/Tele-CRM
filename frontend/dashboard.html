@@ -328,7 +328,7 @@
                 <div class="search-wrapper">
                     
                     <input type="text" class="search-bar" id="filter-name" placeholder="Search by name...">
-<button class="search-icon" onclick="searchLeadsByName()">Search</button>   
+                    <button class="search-icon" onclick="searchLeadsByName()">Search</button>   
                 </div>
                 
                 <div id="search-results-list"></div>
@@ -520,6 +520,7 @@
             </div>
             
             <div class="content" id="report" style="display: none;">
+                <div id="leaderboard" class="sub-content" style="display: none;">
                 <div id="report-options">
                     <div class="leaderboard-page">
                         <div class="leaderboard">
@@ -539,6 +540,8 @@
                           </table>
                         </div>
                     </div>
+                </div>
+                </div>
                     <script> //for leaderboard
                         document.addEventListener("DOMContentLoaded", function () {
                           const leaderboardData = [
@@ -570,10 +573,89 @@
                            populateLeaderboard();
                         });
                     </script>
-                    <div id="call-report">
-                        <h3>Call Report</h3>
-                        <p>View call statistics...</p>
+                <div id="call-report" class="sub-content" style="display: none;">
+                     <div class="calls-report-page">
+                        <section class="summary">
+                            <h2>Call Performance Summary</h2>
+                            <div class="stats">
+                                <div class="stat">
+                                    <h3>Total Calls</h3>
+                                    <p id="total-calls">0</p>
+                                </div>
+                                <div class="stat">
+                                    <h3>Average Duration (mins)</h3>
+                                    <p id="avg-duration">0</p>
+                                </div>
+                                <div class="stat">
+                                    <h3>Top Performer</h3>
+                                    <p id="top-performer">N/A</p>
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section class="detailed-report">
+                            <h2>Detailed Call Report</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Agent</th>
+                                        <th>Total Calls</th>
+                                        <th>Duration (mins)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="calls-data">
+                                </tbody>
+                            </table>
+                        </section>
                     </div>
+                </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                        const callsData = [
+                            { agent: "Alice", totalCalls: 150, duration: 120 },
+                            { agent: "Bob", totalCalls: 140, duration: 110 },
+                            { agent: "Charlie", totalCalls: 130, duration: 100 }
+                        ];
+
+                        const totalCallsElement = document.getElementById("total-calls");
+                        const avgDurationElement = document.getElementById("avg-duration");
+                        const topPerformerElement = document.getElementById("top-performer");
+                        const callsDataBody = document.getElementById("calls-data");
+
+                        let totalCalls = 0;
+                        let totalDuration = 0;
+                        let topPerformer = { agent: "N/A", calls: 0 };
+
+                        callsData.forEach((data) => {
+                        // Summing up total calls and duration
+                        totalCalls += data.totalCalls;
+                        totalDuration += data.duration;
+
+                        // Checking for top performer
+                        if (data.totalCalls > topPerformer.calls) {
+                            topPerformer = { agent: data.agent, calls: data.totalCalls };
+                        }
+
+                        // Creating the table rows dynamically
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${data.agent}</td>
+                            <td>${data.totalCalls}</td>
+                            <td>${data.duration}</td>
+                        `;
+                        callsDataBody.appendChild(row);
+                        });
+
+                        // Calculating average duration
+                        const avgDuration = totalCalls ? (totalDuration / callsData.length).toFixed(2) : 0;
+
+                        // Populating the summary section with data
+                        totalCallsElement.textContent = totalCalls;
+                        avgDurationElement.textContent = avgDuration;
+                        topPerformerElement.textContent = topPerformer.agent;
+                    }); 
+                    </script>
+                <div id="leads-report" class="sub-content" style="display: none;">
                     <div id="leads-report">
                         <h3>Leads Report</h3>
                         <p>View leads statistics...</p>
