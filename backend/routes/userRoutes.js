@@ -1,9 +1,9 @@
 // backend/routes/userRoutes.js
 const express = require('express');
-const { getUsers, createUser } = require('../controllers/userController');
+const { createUser } = require('../controllers/userController');  // Import the function
 const router = express.Router();
 
-router.get('/', getUsers);
-router.post('/', createUser);
+// POST route to create a new user
+router.post('/create-user', createUser);
 
 module.exports = router;
