@@ -520,16 +520,56 @@
             </div>
             
             <div class="content" id="report" style="display: none;">
-                <h2>Reports</h2>
                 <div id="report-options">
-                    <div id="leaderboard">
-                        <h3>Leaderboard</h3>
-                        <ul class="leaderboard-list">
-                            <li>John Doe - 150 leads converted ($1.2M total revenue).</li>
-                            <li>Jane Smith - 130 leads converted ($1.0M total revenue).</li>
-                            <li>Sam Taylor - 110 leads converted ($850K total revenue).</li>
-                        </ul>
+                    <div class="leaderboard-page">
+                        <div class="leaderboard">
+                          <h1>TeleCRM Leaderboard</h1>
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Calls Made</th>
+                                <th>Deals Closed</th>
+                              </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                              <!-- Rows will be dynamically populated -->
+                            </tbody>
+                          </table>
+                        </div>
                     </div>
+                    <script> //for leaderboard
+                        document.addEventListener("DOMContentLoaded", function () {
+                          const leaderboardData = [
+                            { rank: 1, name: "Alice Johnson", callsMade: 150, dealsClosed: 30 },
+                            { rank: 2, name: "Bob Smith", callsMade: 140, dealsClosed: 25 },
+                            { rank: 3, name: "Charlie Brown", callsMade: 130, dealsClosed: 20 },
+                            { rank: 4, name: "Diana Prince", callsMade: 120, dealsClosed: 18 },
+                            { rank: 5, name: "Eve Adams", callsMade: 110, dealsClosed: 15 },
+                          ];
+                        // Function to populate the leaderboard dynamically
+                        function populateLeaderboard() {
+                            const leaderboardBody = document.getElementById("leaderboard-body");
+                            if (!leaderboardBody) {
+                                console.error("Leaderboard body not found!");
+                                return;
+                            }
+
+                            leaderboardData.forEach((entry) => {
+                                const row = document.createElement("tr");
+                                row.innerHTML = `
+                                    <td>${entry.rank}</td>
+                                    <td>${entry.name}</td>
+                                    <td>${entry.callsMade}</td>
+                                    <td>${entry.dealsClosed}</td>
+                                `;
+                            leaderboardBody.appendChild(row);
+                            });
+                           }
+                           populateLeaderboard();
+                        });
+                    </script>
                     <div id="call-report">
                         <h3>Call Report</h3>
                         <p>View call statistics...</p>

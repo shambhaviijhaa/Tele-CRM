@@ -918,3 +918,59 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     z-index: 10; /* Keep it below the dropdown */
 }
 /* user profile end */
+
+/* report leaderboard start */
+/* Namespace with .leaderboard-page */
+.leaderboard-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .leaderboard-page .leaderboard {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaderboard-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .leaderboard-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .leaderboard-page table th,
+  .leaderboard-page table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .leaderboard-page table th {
+    background-color: #14375c;
+    color: white;
+  }
+  
+  .leaderboard-page table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .leaderboard-page table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .leaderboard-page table td {
+    color: #555;
+  }
+  
+/* report leaderboard end */
