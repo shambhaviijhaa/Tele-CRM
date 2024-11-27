@@ -1,8 +1,8 @@
 const express = require('express');
-const { getCalls, createCall } = require('../controllers/callController');
 const router = express.Router();
+const callController = require('../controllers/callController');
 
-router.get('/', getCalls);
-router.post('/', createCall);
+router.get('/', callController.getCalls);
+router.post('/', callController.createCall);
 
 module.exports = router;

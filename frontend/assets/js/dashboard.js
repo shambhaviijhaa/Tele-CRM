@@ -178,20 +178,20 @@ document.addEventListener("DOMContentLoaded", () => {
 //splash screen end
 
 //activities start
-// Show the Leads section
+// Show the Leads section and hide Calls
 function showLeads() {
-    document.getElementById('lead-list').style.display = 'block';
-    document.getElementById('call-list').style.display = 'none';
-    document.getElementById('lead-info').style.display = 'none';
-    document.getElementById('call-info').style.display = 'none';
+    document.getElementById('myLeads').style.display = 'block';  // Show Leads
+    document.getElementById('myCalls').style.display = 'none';   // Hide Calls
+    document.querySelector('.tab.active').classList.remove('active');  // Remove active class from the current tab
+    document.querySelector('.tab:nth-child(1)').classList.add('active');  // Add active class to the "Leads" tab
 }
 
-// Show the Calls section
+// Show the Calls section and hide Leads
 function showCalls() {
-    document.getElementById('lead-list').style.display = 'none';
-    document.getElementById('call-list').style.display = 'block';
-    document.getElementById('lead-info').style.display = 'none';
-    document.getElementById('call-info').style.display = 'none';
+    document.getElementById('myCalls').style.display = 'block';  // Show Calls
+    document.getElementById('myLeads').style.display = 'none';   // Hide Leads
+    document.querySelector('.tab.active').classList.remove('active');  // Remove active class from the current tab
+    document.querySelector('.tab:nth-child(2)').classList.add('active');  // Add active class to the "Calls" tab
 }
 
 // Display lead info when a lead is clicked
@@ -290,6 +290,48 @@ document.getElementById('add-lead-form').addEventListener('submit', function (e)
 document.addEventListener('DOMContentLoaded', function () {
     fetchLeads();
 });
+
+// Function to fetch and display all calls from the backend
+async function fetchCalls() {
+    try {
+        const response = await fetch('http://localhost:5000/api/calls');  // API endpoint for fetching calls
+        const calls = await response.json();
+        const callList = document.getElementById('call-list');
+        callList.innerHTML = '';
+
+        // Populate the calls list dynamically
+        calls.forEach(call => {
+            const callDate = new Date(call.callDate).toLocaleString();
+            callList.innerHTML += `
+                <div class="call-item" onclick="showCallInfo('${call.leadId.name}', '${call.callOutcome}', '${call.leadId.phone}', '${callDate}', '${call.callDuration} minutes')">
+                    <h4>${call.leadId.name}</h4>
+                    <p>Status: ${call.callOutcome}</p>
+                    <p>${callDate}</p>
+                </div>
+            `;
+        });
+    } catch (error) {
+        console.error('Error fetching calls:', error);
+    }
+}
+
+// Call info display function (already in your script)
+function showCallInfo(name, status, phone, time, history) {
+    document.getElementById('call-info').style.display = 'block';
+    document.getElementById('lead-info').style.display = 'none';
+
+    document.getElementById('call-name').textContent = name;
+    document.getElementById('call-status').textContent = status;
+    document.getElementById('call-phone').textContent = phone;
+    document.getElementById('call-time').textContent = time;
+    document.getElementById('call-history').textContent = history;
+}
+
+// Fetch calls on page load
+document.addEventListener('DOMContentLoaded', function () {
+    fetchCalls();
+});
+
 
 // Function to handle Excel file upload and send data to the backend
 function uploadAndDisplay() {
