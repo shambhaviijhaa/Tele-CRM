@@ -555,7 +555,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #2e6e0b; /* Or any background color */
+    background-color: #383e49; /* Or any background color */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1079,3 +1079,100 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 }
 
 /* calls report end */
+
+/* leads report start */
+.crm-leads-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header Section */
+.crm-leads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1b3b6f;
+    padding-bottom: 10px;
+}
+
+.crm-leads-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #1b3b6f;
+    font-weight: bold;
+}
+
+.crm-leads-search-filter {
+    display: flex;
+    gap: 10px;
+}
+
+#crm-leads-searchInput {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+#crm-leads-searchInput:focus {
+    border-color: #1b3b6f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(27, 59, 111, 0.5);
+}
+
+#crm-leads-filterStatus {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+#crm-leads-filterStatus:focus {
+    border-color: #1b3b6f;
+    outline: none;
+}
+
+/* Table Section */
+.crm-leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.crm-leads-table th, 
+.crm-leads-table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.crm-leads-table th {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.crm-leads-table tr:nth-child(even) {
+    background-color: #f7faff;
+}
+
+.crm-leads-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.crm-leads-table tr:hover {
+    background-color: #e0f0ff;
+    transition: background-color 0.3s ease;
+}
+/* lead report end */

@@ -657,10 +657,94 @@
                     </script>
                 <div id="leads-report" class="sub-content" style="display: none;">
                     <div id="leads-report">
-                        <h3>Leads Report</h3>
-                        <p>View leads statistics...</p>
+                        <div class="crm-leads-container">
+                            <header class="crm-leads-header">
+                                <h1 class="crm-leads-title">Lead Report</h1>
+                                <div class="crm-leads-search-filter">
+                                    <input type="text" id="crm-leads-searchInput" placeholder="Search by name or email">
+                                    <select id="crm-leads-filterStatus">
+                                        <option value="all">All Status</option>
+                                        <option value="new">New</option>
+                                        <option value="contacted">Contacted</option>
+                                        <option value="converted">Converted</option>
+                                        <option value="lost">Lost</option>
+                                    </select>
+                                </div>
+                            </header>
+                            <table id="crm-leads-table" class="crm-leads-table">
+                                <thead>
+                                    <tr>
+                                        <th>Lead Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Last Contacted</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-status="new">
+                                        <td>John Doe</td>
+                                        <td>john.doe@example.com</td>
+                                        <td>123-456-7890</td>
+                                        <td>New</td>
+                                        <td>2024-11-01</td>
+                                    </tr>
+                                    <tr data-status="contacted">
+                                        <td>Jane Smith</td>
+                                        <td>jane.smith@example.com</td>
+                                        <td>098-765-4321</td>
+                                        <td>Contacted</td>
+                                        <td>2024-10-29</td>
+                                    </tr>
+                                    <tr data-status="converted">
+                                        <td>Mike Johnson</td>
+                                        <td>mike.johnson@example.com</td>
+                                        <td>555-123-4567</td>
+                                        <td>Converted</td>
+                                        <td>2024-10-25</td>
+                                    </tr>
+                                    <tr data-status="lost">
+                                        <td>Emily Davis</td>
+                                        <td>emily.davis@example.com</td>
+                                        <td>444-567-1234</td>
+                                        <td>Lost</td>
+                                        <td>2024-10-20</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("crm-leads-searchInput");
+  const filterStatus = document.getElementById("crm-leads-filterStatus");
+  const tableRows = document.querySelectorAll("#crm-leads-table tbody tr");
+
+  const filterLeads = () => {
+      const searchValue = searchInput.value.toLowerCase();
+      const statusValue = filterStatus.value;
+
+      tableRows.forEach(row => {
+          const name = row.cells[0].innerText.toLowerCase();
+          const email = row.cells[1].innerText.toLowerCase();
+          const status = row.getAttribute("data-status");
+
+          // Check search and status conditions
+          const matchesSearch = name.includes(searchValue) || email.includes(searchValue);
+          const matchesStatus = statusValue === "all" || status === statusValue;
+
+          // Show or hide row based on conditions
+          row.style.display = matchesSearch && matchesStatus ? "" : "none";
+      });
+  };
+
+  // Attach event listeners for search and filter
+  searchInput.addEventListener("input", filterLeads);
+  filterStatus.addEventListener("change", filterLeads);
+});
+
+                </script>
             </div>
             <div class="content" id="integrations" style="display: none;">
                 <h2>Integrations</h2>
