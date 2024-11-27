@@ -419,6 +419,61 @@ async function searchLeadsByName() {
     }
 }
 
+// calls report start
+// const callsData = [
+//     { agent: "Alice Johnson", totalCalls: 120, duration: 350 },
+//     { agent: "Bob Smith", totalCalls: 98, duration: 290 },
+//     { agent: "Charlie Brown", totalCalls: 135, duration: 400 },
+//     { agent: "Diana Prince", totalCalls: 110, duration: 320 },
+//   ];
+  
+//   // Function to calculate summary stats
+//   function calculateSummary(data) {
+//     const totalCalls = data.reduce((sum, record) => sum + record.totalCalls, 0);
+//     const totalDuration = data.reduce((sum, record) => sum + record.duration, 0);
+//     const avgDuration = (totalDuration / data.length).toFixed(2);
+  
+//     const topPerformer = data.reduce((top, record) => 
+//       record.totalCalls > top.totalCalls ? record : top, { agent: "N/A", totalCalls: 0 }
+//     );
+  
+//     return {
+//       totalCalls,
+//       avgDuration,
+//       topPerformer: topPerformer.agent,
+//     };
+//   }
+  
+//   // Function to load data into the table
+//   function loadCallsData() {
+//     const tbody = document.getElementById("calls-data");
+//     callsData.forEach((record) => {
+//       const row = document.createElement("tr");
+//       row.innerHTML = `
+//         <td>${record.agent}</td>
+//         <td>${record.totalCalls}</td>
+//         <td>${record.duration}</td>
+//       `;
+//       tbody.appendChild(row);
+//     });
+//   }
+  
+//   // Function to display summary stats
+//   function displaySummary() {
+//     const { totalCalls, avgDuration, topPerformer } = calculateSummary(callsData);
+  
+//     document.getElementById("total-calls").textContent = totalCalls;
+//     document.getElementById("avg-duration").textContent = avgDuration;
+//     document.getElementById("top-performer").textContent = topPerformer;
+//   }
+  
+//   // Initialize the report
+//   window.onload = function () {
+//     loadCallsData();
+//     displaySummary();
+//   };
+  
+// calls report end
 // report leaderboard start
 // report leaderboard end
 
