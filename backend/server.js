@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
-
+const path = require('path');
 
 // Load environment variables
 dotenv.config();
@@ -32,6 +32,9 @@ app.use('/api/leads', leadRoutes);
 app.get('/', (req, res) => {
   res.send('Welcome to TeleCRM API');
 });
+
+// Serve static files from the frontend directory
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Start the server
 const PORT = process.env.PORT || 5000;

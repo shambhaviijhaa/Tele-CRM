@@ -421,3 +421,16 @@ async function searchLeadsByName() {
 
 // report leaderboard start
 // report leaderboard end
+
+// dashboard.js (linked in your dashboard.html)
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if the user is logged in (i.e., token is available in localStorage)
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      // Redirect back to login if no token is found
+      alert('Please log in first');
+      window.location.href = 'login.html';
+    }
+  });
+  

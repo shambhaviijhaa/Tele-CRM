@@ -1,32 +1,53 @@
 // backend/controllers/userController.js
 const User = require('../models/User');
-// Function to create a new user
-const createUser = async (req, res) => {
+const bcrypt = require('bcrypt');  // Add bcrypt for password hashing
+const jwt = require('jsonwebtoken');  // Add jwt for token generation
+
+// Sign-up controller logic
+const signUp = async (req, res) => {
   try {
-    const { userId, name, email, role, username, password } = req.body;
+    const { username, name, email, role, password } = req.body;
 
-    const newUser = new User({
-      userId,
-      name,
-      email,
-      role,
-      username,
-      password
-    });
+    // Check if the user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).send('User already exists');
+    }
 
-    // Save the new user to the database
+    // Create a new user
+    const newUser = new User({ username, name, email, role, password });
+
+    // Save the user to the database
     await newUser.save();
-
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).send('User registered successfully');
   } catch (error) {
-    res.status(500).json({ message: 'Error creating user', error: error.message });
+    res.status(500).send('Error registering user: ' + error.message);
   }
 };
-userSchema.pre('save', async function(next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10);
-  }
-  next();
-});
 
-module.exports = { createUser };
+// Login controller logic
+const login = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    // Find user by username
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).send('Invalid credentials');
+    }
+
+    // Check if the provided password matches the stored password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).send('Invalid credentials');
+    }
+
+    // Generate a JWT token if login is successful
+    const token = jwt.sign({ userId: user._id }, 'secretKey');  // Use a proper secret key in production
+    res.json({ token });
+  } catch (error) {
+    res.status(500).send('Error logging in: ' + error.message);
+  }
+};
+
+module.exports = { signUp, login };
