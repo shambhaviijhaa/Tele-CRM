@@ -90,18 +90,31 @@
             <div class="top-bar">
                 <input type="text" class="search-bar" placeholder="Search...">
                 <div class="user-info">
-                    <span class="user-name">UN</span>
-                    <div class="profile-dropdown" id="profileUserDropdown">
-                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 1')">User 1</p>
-                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 2')">User 2</p>
-                        <p class="profile-dropdown-item" onclick="profileSwitchUser('User 3')">User 3</p>
+                    <div class="user-info-container">
+                        <span class="user-name" onclick="toggleProfileSection()">UN</span>
                     </div>
+                    <!-- Hidden Profile Section -->
+                    <div class="profile-section" id="userProfileSection" style="display: none;">
+                        <div class="profile-header">
+                            <h2>User Profile</h2>
+                            <button class="close-button" onclick="toggleProfileSection()">✖</button>
+                        </div>
+                        <div class="profile-details">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Gender:</strong> Male</p>
+                            <p><strong>Status:</strong> Active</p>
+                            <p><strong>Email:</strong> john.doe@example.com</p>
+                            <p><strong>Phone:</strong> +1234567890</p>
+                        </div>
+                    </div>
+                    <script>
+                        function goBack() {
+                            window.history.back(); // Navigate back to the previous page
+                        }
+                    </script>
+                                     
                 </div>
                 <div class="top-right">
-                    <!-- <div class="notification-container">
-                        <i class="fas fa-bell"></i> 
-                        <span class="notification-count">3</span> 
-                    </div> -->
                     <div class="logout-container">
                         <button class="logout-button" onclick="handleLogout()">
                             <i class="fas fa-sign-out-alt"></i> Logout
