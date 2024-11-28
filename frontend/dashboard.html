@@ -6,6 +6,8 @@
     <title>CRM Dashboard</title>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="splash-screen">
@@ -96,10 +98,16 @@
                     </div>
                 </div>
                 <div class="top-right">
-                    <div class="notification-container">
-                        <i class="fas fa-bell"></i> <!-- Notification bell icon -->
-                        <span class="notification-count">3</span> <!-- Notification count -->
+                    <!-- <div class="notification-container">
+                        <i class="fas fa-bell"></i> 
+                        <span class="notification-count">3</span> 
+                    </div> -->
+                    <div class="logout-container">
+                        <button class="logout-button" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
                     </div>
+                    
                     <button class="settings-button" id="settingsButton">
                         <i class="fas fa-cog"></i>
                     </button>

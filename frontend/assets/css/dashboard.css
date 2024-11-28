@@ -1190,3 +1190,104 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     font-weight: bold;
     color: #000204;
 }
+ 
+/* ----------------------------------------------------profile start----------------------------- */
+/* Profile Container */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f6fc;
+}
+
+/* Profile Card */
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Profile Header */
+.profile-card h2 {
+    color: #1b3b6f;
+    margin-bottom: 20px;
+}
+
+/* Profile Details */
+.profile-details {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #555555;
+}
+
+.detail-value {
+    color: #1b3b6f;
+}
+
+/* Back Button */
+.btn-back {
+    background-color: #1b3b6f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-back:hover {
+    background-color: #133053;
+}
+
+/* ----------------------------------------------------profile end --------------------------------*/
+/* logout start */
+.logout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logout-button {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logout-button i {
+    font-size: 1.2rem;
+}
+
+.logout-button:hover {
+    background-color: #133053;
+}
+
+.logout-button:active {
+    transform: scale(0.98);
+}
+
+/* logout end*/
