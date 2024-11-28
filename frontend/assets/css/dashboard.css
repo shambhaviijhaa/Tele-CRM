@@ -888,13 +888,12 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #d5d0d0;;
+    background-color: #c4bdbd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     width: 90%;
-    max-width: 950px;
-    max-height: 900px;
+    max-width: 500px;
     padding: 20px;
 }
 
@@ -912,7 +911,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 .profile-header h2 {
     margin: 0;
     font-size: 1.5rem;
-    color: #fdfffd;
+    color: #ffffff;
 }
 
 /* Close Button */
@@ -934,6 +933,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 .profile-details p {
     margin: 10px 0;
 }
+
 /* user profile end */
 
 /* report leaderboard start */

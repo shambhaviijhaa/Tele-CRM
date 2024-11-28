@@ -417,6 +417,12 @@ function toggleProfileSection() {
         profileSection.style.display = "none"; // Hide the section
     }
 }
+
+// Close the user profile page
+function closeUserProfile() {
+    document.getElementById('userDetailsPage').style.display = 'none';
+}
+
 //  user profile end
 
 // async function searchLeadsByName() {
