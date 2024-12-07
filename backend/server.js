@@ -24,12 +24,14 @@ app.use(bodyParser.json());
 const userRoutes = require('./routes/userRoutes');
 const leadRoutes = require('./routes/leadRoutes');
 const callRoutes = require('./routes/callRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/calls', callRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // Default route for the root
 app.get('/', (req, res) => {

@@ -155,7 +155,7 @@ h2 {
     position: absolute;
     left: 80px; /* Positioning the submenu to the right of the sidebar */
     top: 10%;
-    background-color: #34495e; /* Background color for submenu */
+    background-color: #3f733b; /* Background color for submenu */
     border-radius: 10px; /* Rounded corners */
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow for floating effect */
@@ -915,7 +915,6 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 
 .top-bar {
     position: relative; /* Ensure the navbar retains its flow */
-    z-index: 10; /* Keep it below the dropdown */
 }
 /* user profile end */
 
@@ -957,7 +956,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   }
   
   .leaderboard-page table th {
-    background-color: #14375c;
+    background-color: #44a40f;
     color: white;
   }
   
@@ -1066,7 +1065,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 }
 
 .calls-report-page table th {
-    background-color: #20354c;
+    background-color: #44a40f;
     color: white;
 }
 
@@ -1189,4 +1188,28 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     border-bottom: 2px solid #000204;
     font-weight: bold;
     color: #000204;
+}
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    border: 1px solid #ccc; /* Optional: Add a border to the scroll area */
+}
+
+.crm-leads-table {
+    width: 100%; /* Ensure the table stretches to its full width */
+    min-width: 800px; /* Set a minimum width to trigger scrolling */
+    border-collapse: collapse; /* Neater table borders */
+}
+
+.crm-leads-table th, .crm-leads-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd; /* Add cell borders */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.crm-leads-table th {
+    background-color: #44a40f; /* Light background for headers */
+    font-weight: bold;
 }

@@ -461,65 +461,6 @@ async function searchLeadsByName() {
     }
 }
 
-// calls report start
-// const callsData = [
-//     { agent: "Alice Johnson", totalCalls: 120, duration: 350 },
-//     { agent: "Bob Smith", totalCalls: 98, duration: 290 },
-//     { agent: "Charlie Brown", totalCalls: 135, duration: 400 },
-//     { agent: "Diana Prince", totalCalls: 110, duration: 320 },
-//   ];
-  
-//   // Function to calculate summary stats
-//   function calculateSummary(data) {
-//     const totalCalls = data.reduce((sum, record) => sum + record.totalCalls, 0);
-//     const totalDuration = data.reduce((sum, record) => sum + record.duration, 0);
-//     const avgDuration = (totalDuration / data.length).toFixed(2);
-  
-//     const topPerformer = data.reduce((top, record) => 
-//       record.totalCalls > top.totalCalls ? record : top, { agent: "N/A", totalCalls: 0 }
-//     );
-  
-//     return {
-//       totalCalls,
-//       avgDuration,
-//       topPerformer: topPerformer.agent,
-//     };
-//   }
-  
-//   // Function to load data into the table
-//   function loadCallsData() {
-//     const tbody = document.getElementById("calls-data");
-//     callsData.forEach((record) => {
-//       const row = document.createElement("tr");
-//       row.innerHTML = `
-//         <td>${record.agent}</td>
-//         <td>${record.totalCalls}</td>
-//         <td>${record.duration}</td>
-//       `;
-//       tbody.appendChild(row);
-//     });
-//   }
-  
-//   // Function to display summary stats
-//   function displaySummary() {
-//     const { totalCalls, avgDuration, topPerformer } = calculateSummary(callsData);
-  
-//     document.getElementById("total-calls").textContent = totalCalls;
-//     document.getElementById("avg-duration").textContent = avgDuration;
-//     document.getElementById("top-performer").textContent = topPerformer;
-//   }
-  
-//   // Initialize the report
-//   window.onload = function () {
-//     loadCallsData();
-//     displaySummary();
-//   };
-  
-// calls report end
-// report leaderboard start
-// report leaderboard end
-
-// dashboard.js (linked in your dashboard.html)
 document.addEventListener('DOMContentLoaded', () => {
     // Check if the user is logged in (i.e., token is available in localStorage)
     const token = localStorage.getItem('token');
@@ -530,4 +471,120 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'login.html';
     }
   });
-  
+
+function showSubContent(sectionId, contentId) {
+    // Hide all other sections
+    const sections = document.getElementsByClassName("content");
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+
+    // Hide all sub-content
+    const subContents = document.getElementsByClassName("sub-content");
+    for (let i = 0; i < subContents.length; i++) {
+        subContents[i].style.display = "none";
+    }
+
+    // Show the selected section and sub-content
+    document.getElementById(sectionId).style.display = "block";
+    document.getElementById(contentId).style.display = "block";
+
+    // Fetch data if the call-report section is displayed
+    if (contentId === "call-report") {
+        fetchCallReportData();
+    }
+    // Fetch data if the lead-report section is displayed
+    if (contentId === "leads-report") {
+        fetchLeadReportData();
+    }
+    // Fetch leaderboard data when the leaderboard section is shown
+    if (contentId === "leaderboard") {
+        fetchLeaderboardData();
+    }
+}
+function fetchLeadReportData() {
+    // Fetch Lead Report Data
+    fetch("http://localhost:5000/api/leads/report")
+        .then((response) => {
+            if (!response.ok) throw new Error("Failed to fetch lead report data");
+            return response.json();
+        })
+        .then((data) => {
+            const leadReportTableBody = document.getElementById("leads-report-data");
+            leadReportTableBody.innerHTML = ""; // Clear existing rows
+
+            data.forEach((lead) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${lead.name}</td>
+                    <td>${lead.email || "N/A"}</td>
+                    <td>${lead.phone || "N/A"}</td>
+                    <td>${lead.status}</td>
+                    <td>${lead.tasks.length || 0}</td>
+                    <td>${lead.priority || "Normal"}</td>
+                    <td>${new Date(lead.acquired).toLocaleDateString()}</td>
+                `;
+                leadReportTableBody.appendChild(row);
+            });
+        })
+        .catch((error) => console.error("Error fetching lead report data:", error));
+}
+// Function to fetch and display call report data
+function fetchCallReportData() {
+    // Fetch Summary
+    fetch("http://localhost:5000/api/calls/summary")
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("total-calls").textContent = data.totalCalls;
+        document.getElementById("avg-duration").textContent = data.avgDuration.toFixed(2);
+        document.getElementById("top-performer").textContent = data.topPerformer || "N/A";
+    })
+    .catch((error) => console.error("Error fetching call summary:", error));
+
+
+    // Fetch Detailed Data
+    fetch("http://localhost:5000/api/calls")
+        .then((response) => {
+            if (!response.ok) throw new Error("Failed to fetch call details");
+            return response.json();
+        })
+        .then((data) => {
+            const callsDataBody = document.getElementById("calls-data");
+            callsDataBody.innerHTML = ""; // Clear existing rows
+
+            data.forEach((call) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${call.userId?.name || "Unknown"}</td>
+                    <td>${call.callDuration}</td>
+                    <td>${call.callOutcome}</td>
+                `;
+                callsDataBody.appendChild(row);
+            });
+        })
+        .catch((error) => console.error("Error fetching call details:", error));
+}
+function fetchLeaderboardData() {
+    // Fetch leaderboard data from the backend
+    fetch("http://localhost:5000/api/calls/leaderboard")
+        .then((response) => {
+            if (!response.ok) throw new Error("Failed to fetch leaderboard data");
+            return response.json();
+        })
+        .then((data) => {
+            const leaderboardBody = document.getElementById("leaderboard-body");
+            leaderboardBody.innerHTML = ""; // Clear any existing rows
+
+            // Loop through the leaderboard data and populate the table
+            data.forEach((entry) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${entry.rank}</td>
+                    <td>${entry.name}</td>
+                    <td>${entry.totalCalls}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            });
+        })
+        .catch((error) => console.error("Error fetching leaderboard data:", error));
+}

@@ -466,231 +466,85 @@
             
             <div class="content" id="report" style="display: none;">
                 <div id="leaderboard" class="sub-content" style="display: none;">
-                <div id="report-options">
                     <div class="leaderboard-page">
-                        <div class="leaderboard">
-                          <h1>TeleCRM Leaderboard</h1>
-                          <table>
+                        <h1>Leaderboard</h1>
+                        <table>
                             <thead>
-                              <tr>
-                                <th>Rank</th>
-                                <th>Name</th>
-                                <th>Calls Made</th>
-                                <th>Deals Closed</th>
-                              </tr>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Calls Made</th>
+                                </tr>
                             </thead>
                             <tbody id="leaderboard-body">
-                              <!-- Rows will be dynamically populated -->
+                                <!-- Rows will be populated dynamically -->
                             </tbody>
-                          </table>
-                        </div>
+                        </table>
                     </div>
                 </div>
-                </div>
-                    <script> //for leaderboard
-                        document.addEventListener("DOMContentLoaded", function () {
-                          const leaderboardData = [
-                            { rank: 1, name: "Alice Johnson", callsMade: 150, dealsClosed: 30 },
-                            { rank: 2, name: "Bob Smith", callsMade: 140, dealsClosed: 25 },
-                            { rank: 3, name: "Charlie Brown", callsMade: 130, dealsClosed: 20 },
-                            { rank: 4, name: "Diana Prince", callsMade: 120, dealsClosed: 18 },
-                            { rank: 5, name: "Eve Adams", callsMade: 110, dealsClosed: 15 },
-                          ];
-                        // Function to populate the leaderboard dynamically
-                        function populateLeaderboard() {
-                            const leaderboardBody = document.getElementById("leaderboard-body");
-                            if (!leaderboardBody) {
-                                console.error("Leaderboard body not found!");
-                                return;
-                            }
-
-                            leaderboardData.forEach((entry) => {
-                                const row = document.createElement("tr");
-                                row.innerHTML = `
-                                    <td>${entry.rank}</td>
-                                    <td>${entry.name}</td>
-                                    <td>${entry.callsMade}</td>
-                                    <td>${entry.dealsClosed}</td>
-                                `;
-                            leaderboardBody.appendChild(row);
-                            });
-                           }
-                           populateLeaderboard();
-                        });
-                    </script>
-                <div id="call-report" class="sub-content" style="display: none;">
-                     <div class="calls-report-page">
-                        <section class="summary">
-                            <h2>Call Performance Summary</h2>
-                            <div class="stats">
-                                <div class="stat">
-                                    <h3>Total Calls</h3>
-                                    <p id="total-calls">0</p>
-                                </div>
-                                <div class="stat">
-                                    <h3>Average Duration (mins)</h3>
-                                    <p id="avg-duration">0</p>
-                                </div>
-                                <div class="stat">
-                                    <h3>Top Performer</h3>
-                                    <p id="top-performer">N/A</p>
-                                </div>
-                            </div>
-                        </section>
-                    
-                        <section class="detailed-report">
-                            <h2>Detailed Call Report</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Agent</th>
-                                        <th>Total Calls</th>
-                                        <th>Duration (mins)</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="calls-data">
-                                </tbody>
-                            </table>
-                        </section>
+                
+                 <!-- Call Report Section -->
+    <div id="call-report" class="sub-content" style="display: none;">
+        <div class="calls-report-page">
+            <!-- Summary Section -->
+            <section class="summary">
+                <h2>Call Performance Summary</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>Total Calls</h3>
+                        <p id="total-calls">0</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Average Duration (mins)</h3>
+                        <p id="avg-duration">0</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Top Performer</h3>
+                        <p id="top-performer">N/A</p>
                     </div>
                 </div>
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                        const callsData = [
-                            { agent: "Alice", totalCalls: 150, duration: 120 },
-                            { agent: "Bob", totalCalls: 140, duration: 110 },
-                            { agent: "Charlie", totalCalls: 130, duration: 100 }
-                        ];
+            </section>
 
-                        const totalCallsElement = document.getElementById("total-calls");
-                        const avgDurationElement = document.getElementById("avg-duration");
-                        const topPerformerElement = document.getElementById("top-performer");
-                        const callsDataBody = document.getElementById("calls-data");
-
-                        let totalCalls = 0;
-                        let totalDuration = 0;
-                        let topPerformer = { agent: "N/A", calls: 0 };
-
-                        callsData.forEach((data) => {
-                        // Summing up total calls and duration
-                        totalCalls += data.totalCalls;
-                        totalDuration += data.duration;
-
-                        // Checking for top performer
-                        if (data.totalCalls > topPerformer.calls) {
-                            topPerformer = { agent: data.agent, calls: data.totalCalls };
-                        }
-
-                        // Creating the table rows dynamically
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                            <td>${data.agent}</td>
-                            <td>${data.totalCalls}</td>
-                            <td>${data.duration}</td>
-                        `;
-                        callsDataBody.appendChild(row);
-                        });
-
-                        // Calculating average duration
-                        const avgDuration = totalCalls ? (totalDuration / callsData.length).toFixed(2) : 0;
-
-                        // Populating the summary section with data
-                        totalCallsElement.textContent = totalCalls;
-                        avgDurationElement.textContent = avgDuration;
-                        topPerformerElement.textContent = topPerformer.agent;
-                    }); 
-                    </script>
-                <div id="leads-report" class="sub-content" style="display: none;">
-                    <div id="leads-report">
-                        <div class="crm-leads-container">
-                            <header class="crm-leads-header">
-                                <h1 class="crm-leads-title">Lead Report</h1>
-                                <div class="crm-leads-search-filter">
-                                    <input type="text" id="crm-leads-searchInput" placeholder="Search by name or email">
-                                    <select id="crm-leads-filterStatus">
-                                        <option value="all">All Status</option>
-                                        <option value="new">New</option>
-                                        <option value="contacted">Contacted</option>
-                                        <option value="converted">Converted</option>
-                                        <option value="lost">Lost</option>
-                                    </select>
-                                </div>
-                            </header>
-                            <table id="crm-leads-table" class="crm-leads-table">
-                                <thead>
-                                    <tr>
-                                        <th>Lead Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Status</th>
-                                        <th>Last Contacted</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr data-status="new">
-                                        <td>John Doe</td>
-                                        <td>john.doe@example.com</td>
-                                        <td>123-456-7890</td>
-                                        <td>New</td>
-                                        <td>2024-11-01</td>
-                                    </tr>
-                                    <tr data-status="contacted">
-                                        <td>Jane Smith</td>
-                                        <td>jane.smith@example.com</td>
-                                        <td>098-765-4321</td>
-                                        <td>Contacted</td>
-                                        <td>2024-10-29</td>
-                                    </tr>
-                                    <tr data-status="converted">
-                                        <td>Mike Johnson</td>
-                                        <td>mike.johnson@example.com</td>
-                                        <td>555-123-4567</td>
-                                        <td>Converted</td>
-                                        <td>2024-10-25</td>
-                                    </tr>
-                                    <tr data-status="lost">
-                                        <td>Emily Davis</td>
-                                        <td>emily.davis@example.com</td>
-                                        <td>444-567-1234</td>
-                                        <td>Lost</td>
-                                        <td>2024-10-20</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("crm-leads-searchInput");
-  const filterStatus = document.getElementById("crm-leads-filterStatus");
-  const tableRows = document.querySelectorAll("#crm-leads-table tbody tr");
-
-  const filterLeads = () => {
-      const searchValue = searchInput.value.toLowerCase();
-      const statusValue = filterStatus.value;
-
-      tableRows.forEach(row => {
-          const name = row.cells[0].innerText.toLowerCase();
-          const email = row.cells[1].innerText.toLowerCase();
-          const status = row.getAttribute("data-status");
-
-          // Check search and status conditions
-          const matchesSearch = name.includes(searchValue) || email.includes(searchValue);
-          const matchesStatus = statusValue === "all" || status === statusValue;
-
-          // Show or hide row based on conditions
-          row.style.display = matchesSearch && matchesStatus ? "" : "none";
-      });
-  };
-
-  // Attach event listeners for search and filter
-  searchInput.addEventListener("input", filterLeads);
-  filterStatus.addEventListener("change", filterLeads);
-});
-
-                </script>
+            <!-- Detailed Call Report -->
+            <section class="detailed-report">
+                <h2>Detailed Call Report</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Total Calls</th>
+                            <th>Duration (mins)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calls-data"></tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div id="leads-report" class="sub-content" style="display: none;">
+        <div class="crm-leads-container">
+            <header class="crm-leads-header">
+                <h1 class="crm-leads-title">Lead Report</h1>
+            </header>
+            <div class="table-wrapper">
+                <table class="crm-leads-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Tasks</th>
+                            <th>Priority</th>
+                            <th>Acquired Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leads-report-data"></tbody>
+                </table>
             </div>
+        </div>
+    </div>    
+    
             <div class="content" id="integrations" style="display: none;">
                 <h2>Integrations</h2>
                 <p>Connect your account to Gmail and Google Drive for seamless integration.</p>

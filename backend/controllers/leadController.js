@@ -93,3 +93,35 @@ exports.uploadLeadsFromExcel = async (req, res) => {
         res.status(400).json({ message: 'Error adding leads from Excel.', error });
     }
 };
+const Task = require('../models/Task');
+
+// Get Leads Report with associated Tasks
+exports.getLeadsReport = async (req, res) => {
+    try {
+        const { search, status } = req.query;
+
+        // Create filter object for leads
+        let filter = {};
+        if (search) {
+            filter.$or = [
+                { name: new RegExp(search, 'i') },  // Case-insensitive search for name
+                { email: new RegExp(search, 'i') }
+            ];
+        }
+        if (status && status !== 'all') {
+            filter.status = status;
+        }
+
+        // Fetch leads with their associated tasks
+        const leads = await Lead.find(filter)
+            .populate({
+                path: 'tasks',  // Populate tasks for each lead
+                model: 'Task',   // Use the Task model for population
+                select: 'status priority dueDate outcome note'  // Select specific task fields
+            });
+
+        res.json(leads);  // Return leads along with their tasks
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching leads and tasks', error });
+    }
+};
