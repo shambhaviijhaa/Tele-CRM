@@ -409,62 +409,81 @@ function sendExcelDataToBackend(excelData) {
     });
 }
 //  user profile start
-// Show/Hide the profile dropdown when clicking the user name
-document.querySelector('.user-name').addEventListener('click', () => {
-    const dropdown = document.getElementById('profileUserDropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-});
-
-// Close dropdown if clicked outside
-window.addEventListener('click', (event) => {
-    const dropdown = document.getElementById('profileUserDropdown');
-    const userProfileSection = document.querySelector('.user-profile-section');
-    if (!userProfileSection.contains(event.target)) {
-        dropdown.style.display = 'none';
-    }
-});
-// Toggle dropdown visibility
-document.querySelector('.profile-user-name').addEventListener('click', () => {
-    const dropdown = document.getElementById('profileUserDropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-});
-
-//  user profile end
-
-async function searchLeadsByName() {
-    const name = document.getElementById('filter-name').value;
-    try {
-        const response = await fetch(`http://localhost:5000/api/leads/by-name?name=${name}`);
-        const leads = await response.json();
-
-        // Clear existing search results
-        const searchResults = document.getElementById('search-results-list');
-        searchResults.innerHTML = '';
-
-        // Display results
-        if (leads.length === 0) {
-            searchResults.innerHTML = '<p>No leads found.</p>';
-        } else {
-            leads.forEach(lead => {
-                searchResults.innerHTML += `
-                    <div class="lead-item">
-                        <h4>${lead.name}</h4>
-                        <p>Phone: ${lead.phone}</p>
-                        <p>Email: ${lead.email}</p>
-                        <p>Acquired: ${new Date(lead.acquired).toLocaleString()}</p>
-                    </div>
-                `;
-            });
-        }
-    } catch (error) {
-        console.error('Error fetching leads:', error);
+function toggleProfileSection() {
+    const profileSection = document.getElementById("userProfileSection");
+    if (profileSection.style.display === "none") {
+        profileSection.style.display = "block"; // Show the section
+    } else {
+        profileSection.style.display = "none"; // Hide the section
     }
 }
 
+// Close the user profile page
+function closeUserProfile() {
+    document.getElementById('userDetailsPage').style.display = 'none';
+}
+
+//  user profile end
+
+// async function searchLeadsByName() {
+//     const name = document.getElementById('filter-name').value;
+//     try {
+//         const response = await fetch(`http://localhost:5000/api/leads/by-name?name=${name}`);
+//         const leads = await response.json();
+
+//         // Clear existing search results
+//         const searchResults = document.getElementById('search-results-list');
+//         searchResults.innerHTML = '';
+
+//         // Display results
+//         if (leads.length === 0) {
+//             searchResults.innerHTML = '<p>No leads found.</p>';
+//         } else {
+//             leads.forEach(lead => {
+//                 searchResults.innerHTML += `
+//                     <div class="lead-item">
+//                         <h4>${lead.name}</h4>
+//                         <p>Phone: ${lead.phone}</p>
+//                         <p>Email: ${lead.email}</p>
+//                         <p>Acquired: ${new Date(lead.acquired).toLocaleString()}</p>
+//                     </div>
+//                 `;
+//             });
+//         }
+//     } catch (error) {
+//         console.error('Error fetching leads:', error);
+//     }
+// }
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Check if the user is logged in (i.e., token is available in localStorage)
+//     const token = localStorage.getItem('token');
 document.addEventListener('DOMContentLoaded', () => {
     // Check if the user is logged in (i.e., token is available in localStorage)
     const token = localStorage.getItem('token');
     
+//     if (!token) {
+//       // Redirect back to login if no token is found
+//       alert('Please log in first');
+//       window.location.href = 'login.html';
+//     }
+//   });
+  
+ //--------------------------------------------profile start-------------------------------------------------------------
+ 
+
+ //--------------------------------------------profile end------------------------------------------------------------------
+
+ //logout start
+//  function handleLogout() {
+//     // Show a confirmation dialog
+//     const confirmed = confirm("Are you sure you want to log out?");
+//     if (confirmed) {
+//         // Perform logout logic (e.g., clear user session, redirect to login page)
+//         window.location.href = "login.html"; // Redirect to login page
+//     }
+// }
+
+ //logout end
     if (!token) {
       // Redirect back to login if no token is found
       alert('Please log in first');

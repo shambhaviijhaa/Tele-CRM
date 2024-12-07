@@ -872,7 +872,9 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   }
   
 /* settings end */
+
 /* user profile start */
+/* Main User Info */
 .user-name {
     padding: 10px;
     font-weight: bold;
@@ -880,28 +882,56 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     cursor: pointer;
 }
 
-.profile-dropdown {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: calc(100% + 5px); /* Dropdown below the user name */
-    right: 0; /* Align to the right for proper layout */
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    z-index: 100; /* Ensure dropdown is above other content */
-    min-width: 150px;
+/* Hidden Profile Section */
+.profile-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #c4bdbd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
 }
 
-.profile-dropdown-item {
-    padding: 10px 15px;
+/* Profile Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b3b6f;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Close Button */
+.close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
     cursor: pointer;
-    background-color: white;
-    font-size: 14px;
+}
+
+/* Profile Details */
+.profile-details {
+    padding: 20px;
+    font-size: 1rem;
     color: #333;
 }
 
-.profile-dropdown-item:hover {
-    background-color: rgb(207, 224, 255);
+.profile-details p {
+    margin: 10px 0;
 }
 
 .profile-dropdown-item:active {
@@ -919,7 +949,6 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
 /* user profile end */
 
 /* report leaderboard start */
-/* Namespace with .leaderboard-page */
 .leaderboard-page {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -939,7 +968,65 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
   
   .leaderboard-page h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px;/* Main User Info */
+    .user-name {
+        padding: 10px;
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    
+    /* Hidden Profile Section */
+    .profile-section {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+    }
+    
+    /* Profile Header */
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1b3b6f;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .profile-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    
+    /* Close Button */
+    .close-button {
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    
+    /* Profile Details */
+    .profile-details {
+        padding: 20px;
+        font-size: 1rem;
+        color: #333;
+    }
+    
+    .profile-details p {
+        margin: 10px 0;
+    }
+    
   }
   
   .leaderboard-page table {
@@ -1175,6 +1262,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     transition: background-color 0.3s ease;
 }
 /* lead report end */
+
 /* Style for tabs */
 .tab {
     padding: 10px 20px;
@@ -1189,6 +1277,42 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     font-weight: bold;
     color: #000204;
 }
+ 
+/* logout start */
+.logout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logout-button {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logout-button i {
+    font-size: 1.2rem;
+}
+
+.logout-button:hover {
+    background-color: #133053;
+}
+
+.logout-button:active {
+    transform: scale(0.98);
+}
+
+/* logout end*/
 .table-wrapper {
     width: 100%;
     overflow-x: auto; /* Enable horizontal scrolling */
