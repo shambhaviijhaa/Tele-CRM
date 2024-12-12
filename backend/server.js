@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const session = require('express-session');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path');
@@ -17,9 +18,14 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
-app.use(bodyParser.json());
+// app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5000/",  // Replace with the actual origin of your frontend
+  credentials: true,  // Allow credentials (cookies, authorization headers, etc.)
+}));
 
+app.use(bodyParser.json());
+app.use(session({ secret: 'your_secret', resave: false, saveUninitialized: true }));
 // Import routes
 const userRoutes = require('./routes/userRoutes');
 const leadRoutes = require('./routes/leadRoutes');

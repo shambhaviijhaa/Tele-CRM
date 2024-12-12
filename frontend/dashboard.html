@@ -28,12 +28,7 @@
                         <span class="icon-name">Dashboard</span>
                     </div>
                 </li>
-                <li>
-                    <div class="icon-container" onclick="showSection('search')">
-                        <i class="fas fa-search"></i>
-                        <span class="icon-name">Search</span>
-                    </div>
-                </li>
+                
                 <li>
                     <div class="icon-container" onclick="toggleSubsection('add-lead-submenu')">
                         <i class="fas fa-user-plus"></i>
@@ -69,12 +64,7 @@
                         <li onclick="showSubContent('report','leads-report')">Leads Report</li>
                     </ul>
                 </li>
-                <li>
-                    <div class="icon-container" onclick="showSection('integrations')">
-                        <i class="fas fa-plug"></i>
-                        <span class="icon-name">Integrations</span>
-                    </div>
-                </li>
+            
                 <li>
                     <div class="icon-container" onclick="showSection('lists')">
                         <i class="fas fa-clipboard-list"></i> <!-- Assuming 'fa-list' as the icon -->
@@ -88,7 +78,7 @@
         <div class="main-content">
             <!-- Top Bar with Search and User Info -->
             <div class="top-bar">
-                <input type="text" class="search-bar" placeholder="Search...">
+                
                 <div class="user-info">
                     <div class="user-info-container">
                         <span class="user-name" onclick="toggleProfileSection()">UN</span>
@@ -119,9 +109,7 @@
                 </div>
                 <div class="top-right">
                     <div class="logout-container">
-                        <button class="logout-button" onclick="handleLogout()">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </button>
+                        <button id="logout-button" class="logout-btn">Logout</button>
                     </div>
                     
                     <button class="settings-button" id="settingsButton">
@@ -130,233 +118,69 @@
                 </div>
             </div>
 
-            
-            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-            <!-- Dynamic Content Sections -->
-            <div class="content" id="dashboard" style="display: block;">
+            <div id="dashboard" class="content" style="display: block;">
                 <div class="dashboard-container">
-                    <div class="top-bar">
-                        <h2>Dashboard <span class="refresh-icon">🔄</span></h2>
-                        <div class="date-and-settings">
-                            <button class="date-button">Today ▼</button>
-                            <button class="settings-icon">⚙️</button>
-                        </div>
+                    <!-- Filter Section -->
+                    <div class="dashboard-filters">
+                        <label for="timeRange">Time Range:</label>
+                        <select id="timeRange" onchange="fetchDashboardData()">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month" selected>This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                        <button onclick="refreshDashboard()">Refresh</button>
                     </div>
-
-                    <!-- settings start -->
-                    <div id="settings-container" style="display: none;">
-                        <div class="settings-header">
-                          <h1>Settings</h1>
-                          <button class="close-settings-btn" id="closeSettingsButton">❌</button>
-                        </div>
-                        <div class="settings-content">
-                          <label>
-                            Language:
-                            <select id="language">
-                              <option value="english">English</option>
-                              <option value="spanish">Spanish</option>
-                              <option value="french">French</option>
-                            </select>
-                          </label>
-                          <label for="theme">Choose Theme:
-                            <select id="theme">
-                              <option value="light">Light</option>
-                              <option value="dark">Dark</option>
-                            </select>
-                          </label>
-                          <br><br>
-                          <label>
-                            Notifications:
-                            <input type="checkbox" id="email-notifications"> Email Notifications
-                            <input type="checkbox" id="sms-notifications"> SMS Notifications
-                          </label>
-                        </div>
-                      </div>
-                      
-                      <script>
-                        // Get references to the button and settings container
-                        const settingsButton = document.querySelector(".settings-button");
-                        const closeSettingsButton = document.getElementById("closeSettingsButton");
-                        const settingsContainer = document.getElementById("settings-container");
-
-                        // Show settings when the settings button is clicked
-                        settingsButton.addEventListener("click", () => {
-                        settingsContainer.style.display = "block";
-                        });
-
-                        // Hide settings when the close button is clicked
-                        closeSettingsButton.addEventListener("click", () => {
-                        settingsContainer.style.display = "none";
-                        });
-
-                      </script>
-                    <!-- settings end -->
-                
-                    <div class="info-boxes">
-                        <!-- Activity & Performance Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <table class="performance-table">
-                                <thead>
-                                    <tr>
-                                        <th>Assignee</th>
-                                        <th>Calls</th>
-                                        <th>Duration</th>
-                                        <th>Revenue</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>Total</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                
-                        <!-- Follow Ups Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <div class="follow-up-content">
-                                <p class="no-data">+ Add follow up</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info-boxes">
-                        <!-- Activity & Performance Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <table class="performance-table">
-                                <thead>
-                                    <tr>
-                                        <th>Assignee</th>
-                                        <th>Calls</th>
-                                        <th>Duration</th>
-                                        <th>Revenue</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>Total</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                
-                        <!-- Follow Ups Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <div class="follow-up-content">
-                                <p class="no-data">+ Add follow up</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info-boxes">
-                        <!-- Activity & Performance Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Activity & Performance <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <table class="performance-table">
-                                <thead>
-                                    <tr>
-                                        <th>Assignee</th>
-                                        <th>Calls</th>
-                                        <th>Duration</th>
-                                        <th>Revenue</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="avatar">SA</span> Shweta Agarwal</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>Total</td>
-                                        <td>4</td>
-                                        <td>1m</td>
-                                        <td>₹0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                
-                        <!-- Follow Ups Box -->
-                        <div class="info-box">
-                            <div class="box-header">
-                                <h3>Follow Ups <span class="last-updated">30s ago 🔄</span></h3>
-                                <div class="filter-options">
-                                    <input type="text" placeholder="Search by assignee">
-                                    <button class="date-button-small">Today ▼</button>
-                                </div>
-                            </div>
-                            <div class="follow-up-content">
-                                <p class="no-data">+ Add follow up</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="content" id="search" style="display: none;">
-                <h2>Search Leads</h2>
             
-                <div class="search-wrapper">
-                    
-                    <input type="text" class="search-bar" id="filter-name" placeholder="Search by name...">
-                    <button class="search-icon" onclick="searchLeadsByName()">Search</button>   
+                    <!-- Summary Widgets -->
+                    <div class="summary-widgets">
+                        <div class="widget">
+                            <h3>Total Users</h3>
+                            <p id="total-users">0</p>
+                        </div>
+                        <div class="widget">
+                            <h3>Total Calls</h3>
+                            <p id="total-calls">0</p>
+                        </div>
+                        <div class="widget">
+                            <h3>Top Performer</h3>
+                            <p id="top-performer">N/A</p>
+                        </div>
+                    </div>
+            
+                    <!-- Collapsible Graph Section -->
+                    <div class="graphical-analysis">
+                        <div class="graph-header">
+                            <h2>Performance Trends</h2>
+                            <button onclick="toggleGraphs()">Collapse/Expand</button>
+                        </div>
+                        <div id="graphs-container">
+                            <canvas id="callsChart"></canvas>
+                            <canvas id="leadsChart"></canvas>
+                        </div>
+                    </div>
+            
+                    <!-- Recent Activities Section -->
+                    <div class="activity-overview">
+                        <h2>Recent Calls</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Caller</th>
+                                    <th>Duration (mins)</th>
+                                    <th>Outcome</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-activities">
+                                <!-- Recent activities will be dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                
-                <div id="search-results-list"></div>
-            </div>            
+            </div>
                         
             <div class="content" id="add-lead" style="display: none;">
                 <h2>Add New Leads</h2>

@@ -11,6 +11,163 @@ body, html {
     display: flex;
     height: 100vh;
 }
+/* General Styles */
+.dashboard-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Summary Widgets */
+.summary-widgets {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.widget {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.widget h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #e8f5e9;
+}
+
+.widget p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Activity Overview */
+.activity-overview {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity-overview h2 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.activity-overview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.activity-overview th,
+.activity-overview td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.activity-overview th {
+    background: #4caf50;
+    color: #fff;
+    font-weight: bold;
+}
+
+.activity-overview td {
+    color: #555;
+}
+
+/* Graphical Analysis */
+.graphical-analysis {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.graphical-analysis h2 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+canvas {
+    margin-top: 20px;
+    max-height: 300px;
+    width: 100%;
+}
+/* Filters Section */
+.dashboard-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-filters label {
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #333;
+}
+
+.dashboard-filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.dashboard-filters button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dashboard-filters button:hover {
+    background-color: #45a049;
+}
+
+/* Graph Section */
+.graph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.graph-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#graphs-container {
+    display: none; /* Hidden by default for collapsible functionality */
+}
+
+/* Collapsible */
+.graphical-analysis button {
+    background: none;
+    border: none;
+    color: #4caf50;
+    cursor: pointer;
+}
+
+.graphical-analysis button:hover {
+    text-decoration: underline;
+}
 
 /* Sidebar */
 .sidebar {
@@ -179,6 +336,20 @@ h2 {
 .sidebar {
     position: relative;
 }
+.logout-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
 
 
 /* Main content for subsections */
@@ -188,62 +359,6 @@ h2 {
     margin-top: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Search Section */
-.search-wrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.search-bar {
-    width: 97%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-left: -10px;
-    background-color: #f4f4f4;
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
-}
-
-.search-icon {
-    background-color: #000204bd;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-icon i {
-    font-size: 18px;
-}
-
-.filter-section {
-    margin-top: 20px;
-}
-
-.filter-options {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.filter-option {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
-}
-
-.filter-option input {
-    width: 97%;
-    padding: 10px;
-    font-size: 14px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* add lead */

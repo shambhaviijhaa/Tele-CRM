@@ -607,3 +607,252 @@ function fetchLeaderboardData() {
         })
         .catch((error) => console.error("Error fetching leaderboard data:", error));
 }
+function fetchDashboardData() {
+    const timeRange = document.getElementById("timeRange").value;
+
+    // Fetch summary data with the selected time range
+    fetchSummaryData(timeRange);
+    fetchRecentCalls(timeRange);
+    fetchGraphData(timeRange);
+}
+
+// Fetch summary data
+function fetchSummaryData(timeRange) {
+    fetch(`http://localhost:5000/api/calls/summary?timeRange=${timeRange}`)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("total-users").textContent = data.totalUsers;
+            document.getElementById("total-calls").textContent = data.totalCalls;
+            document.getElementById("top-performer").textContent = data.topPerformer || "N/A";
+        })
+        .catch((error) => console.error("Error fetching summary data:", error));
+}
+
+// Fetch recent calls
+function fetchRecentCalls(timeRange) {
+    fetch(`http://localhost:5000/api/calls?timeRange=${timeRange}`)
+        .then((response) => response.json())
+        .then((calls) => {
+            const recentCalls = calls.slice(-5);
+            const activitiesTable = document.getElementById("recent-activities");
+            activitiesTable.innerHTML = "";
+
+            recentCalls.forEach((call) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${call.userId?.name || "Unknown"}</td>
+                    <td>${call.callDuration}</td>
+                    <td>${call.callOutcome}</td>
+                    <td>${new Date(call.createdAt).toLocaleString()}</td>
+                `;
+                activitiesTable.appendChild(row);
+            });
+        })
+        .catch((error) => console.error("Error fetching recent calls:", error));
+}
+
+// Fetch graphs data
+function fetchGraphData(timeRange) {
+    fetch(`http://localhost:5000/api/calls?timeRange=${timeRange}`)
+        .then((response) => response.json())
+        .then((calls) => {
+            const callDates = {};
+            calls.forEach((call) => {
+                const date = new Date(call.createdAt).toLocaleDateString();
+                callDates[date] = (callDates[date] || 0) + 1;
+            });
+
+            const sortedDates = Object.keys(callDates).sort();
+            const callValues = sortedDates.map((date) => callDates[date]);
+
+            updateChart("callsChart", callsChartInstance, "Calls Over Time", sortedDates, callValues, "line", (chart) => {
+                callsChartInstance = chart;
+            });
+        });
+
+    fetch(`http://localhost:5000/api/leads?timeRange=${timeRange}`)
+        .then((response) => response.json())
+        .then((leads) => {
+            const leadDates = {};
+            leads.forEach((lead) => {
+                const date = new Date(lead.createdAt).toLocaleDateString();
+                leadDates[date] = (leadDates[date] || 0) + 1;
+            });
+
+            const sortedDates = Object.keys(leadDates).sort();
+            const leadValues = sortedDates.map((date) => leadDates[date]);
+
+            updateChart("leadsChart", leadsChartInstance, "Leads Over Time", sortedDates, leadValues, "bar", (chart) => {
+                leadsChartInstance = chart;
+            });
+        });
+}
+
+// Toggle graph visibility
+function toggleGraphs() {
+    const container = document.getElementById("graphs-container");
+    container.style.display = container.style.display === "none" ? "block" : "none";
+}
+
+// Refresh dashboard manually
+function refreshDashboard() {
+    fetchDashboardData();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadDashboardData();
+});
+
+function loadDashboardData() {
+    fetchSummaryData();
+    fetchRecentCalls();
+    fetchGraphData();
+}
+
+// Fetch summary data
+function fetchSummaryData() {
+    // Fetch total users
+    fetch("http://localhost:5000/api/users")
+        .then((response) => response.json())
+        .then((users) => {
+            document.getElementById("total-users").textContent = users.length;
+        })
+        .catch((error) => console.error("Error fetching users:", error));
+
+    // Fetch call summary
+    fetch("http://localhost:5000/api/calls/summary")
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("total-calls").textContent = data.totalCalls;
+            document.getElementById("top-performer").textContent = data.topPerformer || "N/A";
+        })
+        .catch((error) => console.error("Error fetching call summary:", error));
+}
+
+// Fetch recent calls for activity table
+function fetchRecentCalls() {
+    fetch("http://localhost:5000/api/calls")
+        .then((response) => response.json())
+        .then((calls) => {
+            const recentCalls = calls.slice(-5); // Take the last 5 calls
+            const activitiesTable = document.getElementById("recent-activities");
+            activitiesTable.innerHTML = ""; // Clear existing rows
+
+            recentCalls.forEach((call) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${call.userId?.name || "Unknown"}</td>
+                    <td>${call.callDuration}</td>
+                    <td>${call.callOutcome}</td>
+                    <td>${new Date(call.createdAt).toLocaleString()}</td>
+                `;
+                activitiesTable.appendChild(row);
+            });
+        })
+        .catch((error) => console.error("Error fetching recent calls:", error));
+}
+
+// Global variables to store chart instances
+let callsChartInstance = null;
+let leadsChartInstance = null;
+
+// Fetch graph data
+function fetchGraphData() {
+    // Fetch calls for trends
+    fetch("http://localhost:5000/api/calls")
+        .then((response) => response.json())
+        .then((calls) => {
+            const callDates = {};
+            calls.forEach((call) => {
+                const date = new Date(call.createdAt).toLocaleDateString();
+                callDates[date] = (callDates[date] || 0) + 1;
+            });
+
+            const sortedDates = Object.keys(callDates).sort();
+            const callValues = sortedDates.map((date) => callDates[date]);
+
+            updateChart("callsChart", callsChartInstance, "Calls Over Time", sortedDates, callValues, "line", (chart) => {
+                callsChartInstance = chart;
+            });
+        })
+        .catch((error) => console.error("Error fetching call data:", error));
+
+    // Fetch leads for trends
+    fetch("http://localhost:5000/api/leads")
+        .then((response) => response.json())
+        .then((leads) => {
+            const leadDates = {};
+            leads.forEach((lead) => {
+                const date = new Date(lead.createdAt).toLocaleDateString();
+                leadDates[date] = (leadDates[date] || 0) + 1;
+            });
+
+            const sortedDates = Object.keys(leadDates).sort();
+            const leadValues = sortedDates.map((date) => leadDates[date]);
+
+            updateChart("leadsChart", leadsChartInstance, "Leads Acquired Over Time", sortedDates, leadValues, "bar", (chart) => {
+                leadsChartInstance = chart;
+            });
+        })
+        .catch((error) => console.error("Error fetching lead data:", error));
+}
+
+// Update or create a chart
+function updateChart(canvasId, existingChart, label, labels, data, type, setInstanceCallback) {
+    if (existingChart) {
+        // Update existing chart
+        existingChart.data.labels = labels;
+        existingChart.data.datasets[0].data = data;
+        existingChart.update();
+    } else {
+        // Create new chart
+        const ctx = document.getElementById(canvasId).getContext("2d");
+        const chart = new Chart(ctx, {
+            type: type,
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: label,
+                        data: data,
+                        borderColor: "#4CAF50",
+                        backgroundColor: type === "line" ? "rgba(76, 175, 80, 0.2)" : "rgba(76, 175, 80, 0.5)",
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            },
+        });
+
+        // Store the new chart instance
+        setInstanceCallback(chart);
+    }
+}
+// Logout Function
+function logout() {
+    // If using token-based authentication, clear the token
+    localStorage.removeItem("authToken");
+
+    fetch("http://localhost:5000/api/users/logout", {
+        method: "POST",
+        credentials: "include",
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Logout failed");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data.message || "Logged out");
+            window.location.href = "/login.html";
+        })
+        .catch((error) => console.error("Error during logout:", error));
+    
+    
+}
+
+// Add event listener for the logout button
+document.getElementById("logout-button").addEventListener("click", logout);
