@@ -11,6 +11,163 @@ body, html {
     display: flex;
     height: 100vh;
 }
+/* General Styles */
+.dashboard-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Summary Widgets */
+.summary-widgets {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.widget {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.widget h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #e8f5e9;
+}
+
+.widget p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Activity Overview */
+.activity-overview {
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity-overview h2 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.activity-overview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.activity-overview th,
+.activity-overview td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.activity-overview th {
+    background: #4caf50;
+    color: #fff;
+    font-weight: bold;
+}
+
+.activity-overview td {
+    color: #555;
+}
+
+/* Graphical Analysis */
+.graphical-analysis {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.graphical-analysis h2 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+canvas {
+    margin-top: 20px;
+    max-height: 300px;
+    width: 100%;
+}
+/* Filters Section */
+.dashboard-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-filters label {
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #333;
+}
+
+.dashboard-filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.dashboard-filters button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dashboard-filters button:hover {
+    background-color: #45a049;
+}
+
+/* Graph Section */
+.graph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.graph-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#graphs-container {
+    display: none; /* Hidden by default for collapsible functionality */
+}
+
+/* Collapsible */
+.graphical-analysis button {
+    background: none;
+    border: none;
+    color: #4caf50;
+    cursor: pointer;
+}
+
+.graphical-analysis button:hover {
+    text-decoration: underline;
+}
 
 /* Sidebar */
 .sidebar {
@@ -155,7 +312,7 @@ h2 {
     position: absolute;
     left: 80px; /* Positioning the submenu to the right of the sidebar */
     top: 10%;
-    background-color: #34495e; /* Background color for submenu */
+    background-color: #3f733b; /* Background color for submenu */
     border-radius: 10px; /* Rounded corners */
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Shadow for floating effect */
@@ -179,6 +336,20 @@ h2 {
 .sidebar {
     position: relative;
 }
+.logout-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
 
 
 /* Main content for subsections */
@@ -188,62 +359,6 @@ h2 {
     margin-top: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Search Section */
-.search-wrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.search-bar {
-    width: 97%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-left: -10px;
-    background-color: #f4f4f4;
-    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
-}
-
-.search-icon {
-    background-color: #000204bd;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-icon i {
-    font-size: 18px;
-}
-
-.filter-section {
-    margin-top: 20px;
-}
-
-.filter-options {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.filter-option {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
-}
-
-.filter-option input {
-    width: 97%;
-    padding: 10px;
-    font-size: 14px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* add lead */
@@ -555,7 +670,7 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #2e6e0b; /* Or any background color */
+    background-color: #383e49; /* Or any background color */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -830,4 +945,510 @@ input[type="color"].custom-color-input:valid + .custom-color-placeholder {
     .list-section, .info-section {
         width: 100%;
     }
+}
+/* settings start */
+.settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .settings-button i {
+    color: #555;
+    font-size: 24px;
+  }
+  
+  /* Style for the settings container */
+  #settings-container {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    width: 300px;
+  }
+  
+  .close-settings-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .settings-header h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+/* settings end */
+
+/* user profile start */
+/* Main User Info */
+.user-name {
+    padding: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Hidden Profile Section */
+.profile-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #c4bdbd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b3b6f;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Close Button */
+.close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Profile Details */
+.profile-details {
+    padding: 20px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.profile-details p {
+    margin: 10px 0;
+}
+
+.profile-dropdown-item:active {
+    background-color: #7496da;
+}
+
+/* Override conflicting parent styles if any */
+.top-bar .user-profile-section {
+    margin: 0;
+}
+
+.top-bar {
+    position: relative; /* Ensure the navbar retains its flow */
+}
+/* user profile end */
+
+/* report leaderboard start */
+.leaderboard-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .leaderboard-page .leaderboard {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leaderboard-page h1 {
+    text-align: center;
+    margin-bottom: 20px;/* Main User Info */
+    .user-name {
+        padding: 10px;
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    
+    /* Hidden Profile Section */
+    .profile-section {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+    }
+    
+    /* Profile Header */
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1b3b6f;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .profile-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    
+    /* Close Button */
+    .close-button {
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    
+    /* Profile Details */
+    .profile-details {
+        padding: 20px;
+        font-size: 1rem;
+        color: #333;
+    }
+    
+    .profile-details p {
+        margin: 10px 0;
+    }
+    
+  }
+  
+  .leaderboard-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .leaderboard-page table th,
+  .leaderboard-page table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .leaderboard-page table th {
+    background-color: #44a40f;
+    color: white;
+  }
+  
+  .leaderboard-page table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .leaderboard-page table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .leaderboard-page table td {
+    color: #555;
+  }
+  
+/* report leaderboard end */
+/* calls report start*/
+/* Scoped for Calls Report Page */
+.calls-report-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.calls-report-page header {
+    color: rgb(44, 55, 100);
+    padding: 5px 5px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.calls-report-page header nav {
+    margin-top: 10px;
+}
+
+.calls-report-page header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.calls-report-page header nav a.active {
+    background-color: #0056b3;
+}
+
+/* Summary Section for Calls Report */
+.calls-report-page .summary {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calls-report-page .stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.calls-report-page .stat {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 10px;
+}
+
+.calls-report-page .stat h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.calls-report-page .stat p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Detailed Report Section for Calls */
+.calls-report-page .detailed-report {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calls-report-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.calls-report-page table th, .calls-report-page table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.calls-report-page table th {
+    background-color: #44a40f;
+    color: white;
+}
+
+.calls-report-page table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.calls-report-page table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* calls report end */
+
+/* leads report start */
+.crm-leads-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header Section */
+.crm-leads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1b3b6f;
+    padding-bottom: 10px;
+}
+
+.crm-leads-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #1b3b6f;
+    font-weight: bold;
+}
+
+.crm-leads-search-filter {
+    display: flex;
+    gap: 10px;
+}
+
+#crm-leads-searchInput {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+#crm-leads-searchInput:focus {
+    border-color: #1b3b6f;
+    outline: none;
+    box-shadow: 0 0 5px rgba(27, 59, 111, 0.5);
+}
+
+#crm-leads-filterStatus {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+#crm-leads-filterStatus:focus {
+    border-color: #1b3b6f;
+    outline: none;
+}
+
+/* Table Section */
+.crm-leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.crm-leads-table th, 
+.crm-leads-table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.crm-leads-table th {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.crm-leads-table tr:nth-child(even) {
+    background-color: #f7faff;
+}
+
+.crm-leads-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.crm-leads-table tr:hover {
+    background-color: #e0f0ff;
+    transition: background-color 0.3s ease;
+}
+/* lead report end */
+
+/* Style for tabs */
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+/* Highlight the active tab */
+.tab.active {
+    border-bottom: 2px solid #000204;
+    font-weight: bold;
+    color: #000204;
+}
+ 
+/* logout start */
+.logout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logout-button {
+    background-color: #1b3b6f;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logout-button i {
+    font-size: 1.2rem;
+}
+
+.logout-button:hover {
+    background-color: #133053;
+}
+
+.logout-button:active {
+    transform: scale(0.98);
+}
+
+/* logout end*/
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    border: 1px solid #ccc; /* Optional: Add a border to the scroll area */
+}
+
+.crm-leads-table {
+    width: 100%; /* Ensure the table stretches to its full width */
+    min-width: 800px; /* Set a minimum width to trigger scrolling */
+    border-collapse: collapse; /* Neater table borders */
+}
+
+.crm-leads-table th, .crm-leads-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd; /* Add cell borders */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.crm-leads-table th {
+    background-color: #44a40f; /* Light background for headers */
+    font-weight: bold;
 }
